@@ -1,3 +1,4 @@
+import 'package:moto_maintanix/models/repo/car_table/car_item_model.dart';
 import 'package:moto_maintanix/objectbox.g.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -17,10 +18,10 @@ class ObjectBoxService {
   }
 
   // Initialize ObjectBoxService
-  static void init() async => objectbox = await _createDB();
+  static Future<void> init() async => objectbox = await _createDB();
 
-  void createOrUpdateCarRegister(CarItemModel_ carItemModel) {
-    _store.box<CarItemModel_>().put(carItemModel);
+  int createOrUpdateCarRegister(CarItemModel carItemModel) {
+    return _store.box<CarItemModel>().put(carItemModel);
   }
 
   void createOrUpdateMaintReminder(MaintReminderModel_ maintReminderModel) {
@@ -35,8 +36,8 @@ class ObjectBoxService {
     _store.box<MaintReminderModel_>().remove(id);
   }
 
-  List<CarItemModel_> getCarItems() {
-    return _store.box<CarItemModel_>().getAll();
+  List<CarItemModel> getCarItems() {
+    return _store.box<CarItemModel>().getAll();
   }
 
   List<MaintReminderModel_> getMaintReminders() {

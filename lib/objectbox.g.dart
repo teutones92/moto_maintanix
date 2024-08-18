@@ -23,53 +23,43 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(1, 2143468729157234447),
+      id: const obx_int.IdUid(1, 2644736726534721272),
       name: 'CarItemModel',
-      lastPropertyId: const obx_int.IdUid(9, 5520691666649990511),
+      lastPropertyId: const obx_int.IdUid(7, 4485877392755500512),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 7532295429165787806),
+            id: const obx_int.IdUid(1, 4386341857696236091),
             name: 'id',
             type: 6,
             flags: 129),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 6132867069811065524),
-            name: 'name',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 6797039972357593740),
+            id: const obx_int.IdUid(2, 5384326123355209243),
             name: 'carType',
             type: 6,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 1333033025322800989),
+            id: const obx_int.IdUid(3, 730701198497241027),
             name: 'brand',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 3529025154377980601),
+            id: const obx_int.IdUid(4, 5010530399354534946),
             name: 'model',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 2157097316402982759),
+            id: const obx_int.IdUid(5, 3093321621960778265),
             name: 'year',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 3332987510127743735),
-            name: 'color',
+            id: const obx_int.IdUid(6, 4761827788490456835),
+            name: 'notes',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(8, 544326401253182694),
-            name: 'plate',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(9, 5520691666649990511),
+            id: const obx_int.IdUid(7, 4485877392755500512),
             name: 'image',
             type: 9,
             flags: 0)
@@ -77,33 +67,33 @@ final _entities = <obx_int.ModelEntity>[
       relations: <obx_int.ModelRelation>[],
       backlinks: <obx_int.ModelBacklink>[]),
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(2, 6951699321459603610),
+      id: const obx_int.IdUid(2, 1424666044304327153),
       name: 'MaintCostTable',
-      lastPropertyId: const obx_int.IdUid(5, 8277605962992648352),
+      lastPropertyId: const obx_int.IdUid(5, 4740663263791583137),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 701251062771022127),
+            id: const obx_int.IdUid(1, 5440721104729339491),
             name: 'id',
             type: 6,
             flags: 129),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 9080227805548565066),
+            id: const obx_int.IdUid(2, 1838346920051080466),
             name: 'vehicleId',
             type: 6,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 5378238735152157589),
+            id: const obx_int.IdUid(3, 6276726616740733201),
             name: 'maintId',
             type: 6,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 4767307005193527021),
+            id: const obx_int.IdUid(4, 797930777287238906),
             name: 'cost',
             type: 8,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 8277605962992648352),
+            id: const obx_int.IdUid(5, 4740663263791583137),
             name: 'part',
             type: 9,
             flags: 0)
@@ -111,43 +101,43 @@ final _entities = <obx_int.ModelEntity>[
       relations: <obx_int.ModelRelation>[],
       backlinks: <obx_int.ModelBacklink>[]),
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(3, 4975077510805709139),
+      id: const obx_int.IdUid(3, 3399358081829213400),
       name: 'MaintReminderModel',
-      lastPropertyId: const obx_int.IdUid(7, 3049124428808124155),
+      lastPropertyId: const obx_int.IdUid(7, 3907269406891412037),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 8935045673645063422),
+            id: const obx_int.IdUid(1, 3143918936592833977),
             name: 'id',
             type: 6,
             flags: 129),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 7461977776641264340),
+            id: const obx_int.IdUid(2, 6180255291990467718),
             name: 'title',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 6489550675616243176),
+            id: const obx_int.IdUid(3, 2362591484650481106),
             name: 'description',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 187793988736406032),
+            id: const obx_int.IdUid(4, 4055280715756766388),
             name: 'date',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 1568610055736704113),
+            id: const obx_int.IdUid(5, 7410165466750992518),
             name: 'completed',
             type: 1,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 6832108749091402075),
+            id: const obx_int.IdUid(6, 6423177677198498482),
             name: 'reminderStatus',
             type: 1,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 3049124428808124155),
+            id: const obx_int.IdUid(7, 3907269406891412037),
             name: 'vehicleId',
             type: 6,
             flags: 0)
@@ -155,48 +145,48 @@ final _entities = <obx_int.ModelEntity>[
       relations: <obx_int.ModelRelation>[],
       backlinks: <obx_int.ModelBacklink>[]),
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(4, 922210411738223884),
+      id: const obx_int.IdUid(4, 4427088337538947801),
       name: 'MaintTable',
-      lastPropertyId: const obx_int.IdUid(8, 3922239550191900808),
+      lastPropertyId: const obx_int.IdUid(8, 1313382227650033690),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 8587613124885100277),
+            id: const obx_int.IdUid(1, 4810804903624182236),
             name: 'id',
             type: 6,
             flags: 129),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 7686673212471648229),
+            id: const obx_int.IdUid(2, 6036640739334076623),
             name: 'maintDate',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 1704277275887225551),
+            id: const obx_int.IdUid(3, 722123457045050887),
             name: 'vehicleId',
             type: 6,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 3825558881634252810),
+            id: const obx_int.IdUid(4, 6850415484799322482),
             name: 'maintType',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 7228783798925391487),
+            id: const obx_int.IdUid(5, 3845008165725100387),
             name: 'maintDescription',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 5538557568110005203),
+            id: const obx_int.IdUid(6, 914027949301914091),
             name: 'otherNotes',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 6523546566896593485),
+            id: const obx_int.IdUid(7, 3475401505067336060),
             name: 'maintStatus',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(8, 3922239550191900808),
+            id: const obx_int.IdUid(8, 1313382227650033690),
             name: 'attachedFiles',
             type: 9,
             flags: 0)
@@ -240,7 +230,7 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(4, 922210411738223884),
+      lastEntityId: const obx_int.IdUid(4, 4427088337538947801),
       lastIndexId: const obx_int.IdUid(0, 0),
       lastRelationId: const obx_int.IdUid(0, 0),
       lastSequenceId: const obx_int.IdUid(0, 0),
@@ -262,29 +252,24 @@ obx_int.ModelDefinition getObjectBoxModel() {
           object.id = id;
         },
         objectToFB: (CarItemModel object, fb.Builder fbb) {
-          final nameOffset = fbb.writeString(object.name);
           final brandOffset =
               object.brand == null ? null : fbb.writeString(object.brand!);
           final modelOffset =
               object.model == null ? null : fbb.writeString(object.model!);
           final yearOffset =
               object.year == null ? null : fbb.writeString(object.year!);
-          final colorOffset =
-              object.color == null ? null : fbb.writeString(object.color!);
-          final plateOffset =
-              object.plate == null ? null : fbb.writeString(object.plate!);
+          final notesOffset =
+              object.notes == null ? null : fbb.writeString(object.notes!);
           final imageOffset =
               object.image == null ? null : fbb.writeString(object.image!);
-          fbb.startTable(10);
+          fbb.startTable(8);
           fbb.addInt64(0, object.id ?? 0);
-          fbb.addOffset(1, nameOffset);
-          fbb.addInt64(2, object.carType);
-          fbb.addOffset(3, brandOffset);
-          fbb.addOffset(4, modelOffset);
-          fbb.addOffset(5, yearOffset);
-          fbb.addOffset(6, colorOffset);
-          fbb.addOffset(7, plateOffset);
-          fbb.addOffset(8, imageOffset);
+          fbb.addInt64(1, object.carType);
+          fbb.addOffset(2, brandOffset);
+          fbb.addOffset(3, modelOffset);
+          fbb.addOffset(4, yearOffset);
+          fbb.addOffset(5, notesOffset);
+          fbb.addOffset(6, imageOffset);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -293,31 +278,25 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final rootOffset = buffer.derefObject(0);
           final idParam =
               const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
-          final nameParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
-          final carTypeParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
-          final brandParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 10);
-          final modelParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 12);
-          final yearParam = const fb.StringReader(asciiOptimization: true)
+          final notesParam = const fb.StringReader(asciiOptimization: true)
               .vTableGetNullable(buffer, rootOffset, 14);
-          final colorParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 16);
-          final plateParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 18);
+          final carTypeParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
+          final brandParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 8);
+          final modelParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 10);
+          final yearParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 12);
           final imageParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 20);
+              .vTableGetNullable(buffer, rootOffset, 16);
           final object = CarItemModel(
               id: idParam,
-              name: nameParam,
+              notes: notesParam,
               carType: carTypeParam,
               brand: brandParam,
               model: modelParam,
               year: yearParam,
-              color: colorParam,
-              plate: plateParam,
               image: imageParam);
 
           return object;
@@ -499,37 +478,29 @@ class CarItemModel_ {
   static final id =
       obx.QueryIntegerProperty<CarItemModel>(_entities[0].properties[0]);
 
-  /// See [CarItemModel.name].
-  static final name =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[1]);
-
   /// See [CarItemModel.carType].
   static final carType =
-      obx.QueryIntegerProperty<CarItemModel>(_entities[0].properties[2]);
+      obx.QueryIntegerProperty<CarItemModel>(_entities[0].properties[1]);
 
   /// See [CarItemModel.brand].
   static final brand =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[3]);
+      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[2]);
 
   /// See [CarItemModel.model].
   static final model =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[4]);
+      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[3]);
 
   /// See [CarItemModel.year].
   static final year =
+      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[4]);
+
+  /// See [CarItemModel.notes].
+  static final notes =
       obx.QueryStringProperty<CarItemModel>(_entities[0].properties[5]);
-
-  /// See [CarItemModel.color].
-  static final color =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[6]);
-
-  /// See [CarItemModel.plate].
-  static final plate =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[7]);
 
   /// See [CarItemModel.image].
   static final image =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[8]);
+      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[6]);
 }
 
 /// [MaintCostTable] entity fields to define ObjectBox queries.

@@ -28,7 +28,7 @@ class ImagePickerBloc extends Cubit<File?> {
     }
   }
 
-  void removeImage() {
+  void reset() {
     emit(null);
   }
 }

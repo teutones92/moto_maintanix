@@ -1,20 +1,20 @@
 class CarsDataModel {
   String brand;
-  List<String> model;
+  List<String> models;
 
-  CarsDataModel({required this.brand, required this.model});
+  CarsDataModel({required this.brand, required this.models});
 
   factory CarsDataModel.fromJson(Map<String, dynamic> json) {
     return CarsDataModel(
       brand: json['brand'],
-      model: List<String>.from(json['model']),
+      models: List<String>.from(json['models']),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'brand': brand,
-      'model': model,
+      'models': models,
     };
   }
 }

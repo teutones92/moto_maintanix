@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/models/app/car_category_model.dart';
 import 'package:moto_maintanix/models/repo/cars_data_model/cars_data_model.dart';
-import 'package:moto_maintanix/views/car_style_view/car_style_view.dart';
+import 'package:moto_maintanix/views/vehicle_brand_view/vehicle_brand_view.dart';
+import 'package:moto_maintanix/views/vehicle_model_view/vehicle_model_view.dart';
+import 'package:moto_maintanix/views/vehicle_style_view/vehicle_style_view.dart';
 
 class AddCar extends StatelessWidget {
   const AddCar({super.key});
@@ -19,11 +22,12 @@ class AddCar extends StatelessWidget {
             floating: false,
             pinned: true,
             backgroundColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
             flexibleSpace: FlexibleSpaceBar(
               title: const Text('Add Car'),
               background: Image.asset(
                 'assets/cars_images/no_car.png',
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
               ),
             ),
             actions: [
@@ -73,24 +77,30 @@ class AddCar extends StatelessWidget {
                                   case 0:
                                     showModalBottomSheet(
                                       context: context,
+                                      // backgroundColor: Theme.of(context)
+                                      //     .scaffoldBackgroundColor,
                                       builder: (context) {
-                                        return const CarStyleView();
+                                        return const VehicleStyleView();
                                       },
                                     );
                                     break;
                                   case 1:
                                     showModalBottomSheet(
                                       context: context,
+                                      backgroundColor: Theme.of(context)
+                                          .scaffoldBackgroundColor,
                                       builder: (context) {
-                                        return const CarStyleView();
+                                        return const VehicleBrandView();
                                       },
                                     );
                                     break;
                                   case 2:
                                     showModalBottomSheet(
                                       context: context,
+                                      backgroundColor: Theme.of(context)
+                                          .scaffoldBackgroundColor,
                                       builder: (context) {
-                                        return const CarStyleView();
+                                        return const VehicleModelView();
                                       },
                                     );
                                     break;
@@ -104,7 +114,7 @@ class AddCar extends StatelessWidget {
                                       builder: (context, state) {
                                         return Text(state != null
                                             ? 'Vehicle style: ${state.name}'
-                                            : 'Select a style');
+                                            : 'Select the style of your car');
                                       },
                                     ),
                                   if (index == 1)
@@ -112,14 +122,16 @@ class AddCar extends StatelessWidget {
                                         CarsDataModel?>(
                                       builder: (context, state) {
                                         return Text(state == null
-                                            ? 'Select a brand'
+                                            ? 'Select the brand of your car'
                                             : 'Vehicle brand: ${state.brand}');
                                       },
                                     ),
                                   if (index == 2)
                                     BlocBuilder<VehicleModelBloc, String>(
                                       builder: (context, state) {
-                                        return const Text('Vehicle model: ');
+                                        return Text(state.isEmpty
+                                            ? 'Select the model of your car'
+                                            : 'Vehicle model: $state');
                                       },
                                     ),
                                   const Spacer(),
@@ -131,14 +143,34 @@ class AddCar extends StatelessWidget {
                         }),
                       ),
                       const SizedBox(height: 10),
-                      const Card(
+                      Card(
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 13),
+                          padding: const EdgeInsets.symmetric(horizontal: 13),
                           child: TextField(
-                            decoration: InputDecoration(
+                            controller: context.read<CarItemBloc>().carYearCtrl,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
                               label: Text('Enter the year of the car'),
-                              hintText: 'Eje: 2021',
                               icon: Icon(Icons.calendar_today_rounded),
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 13),
+                          child: TextField(
+                            controller:
+                                context.read<CarItemBloc>().carExtraNoteCtrl,
+                            maxLines: 2,
+                            decoration: const InputDecoration(
+                              label: Text('Extra Notes'),
+                              icon: Icon(Icons.note),
                               border: InputBorder.none,
                             ),
                           ),
@@ -149,7 +181,9 @@ class AddCar extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          context.read<CarItemBloc>().saveCar(context);
+                        },
                         child: const Text('Save Car'),
                       ),
                     ],

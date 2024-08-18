@@ -8,13 +8,7 @@ class CarCategoryBloc extends Cubit<CarCategoryModel?> {
     emit(carCategory);
   }
 
-  void removeCarCategory() {
+  void reset() {
     emit(null);
   }
-
-  void updateCarCategory(CarCategoryModel carCategory) {
-    emit(carCategory);
-  }
-
-  void selectCarCategory(CarCategoryModel car) {}
 }

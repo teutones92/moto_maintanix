@@ -18,6 +18,7 @@ class CustomMultiBlocsProvider {
   static get providers => [
         BlocProvider(create: (_) => ThemeX()),
         BlocProvider(create: (_) => VehicleBrandBloc()),
+        BlocProvider(create: (_) => VehicleBrandListBloc()),
         BlocProvider(create: (_) => VehicleModelBloc()),
         BlocProvider(create: (_) => CarItemBloc()),
         BlocProvider(create: (_) => CarCategoryBloc()),

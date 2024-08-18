@@ -12,10 +12,12 @@ class _CategoryTabWidgetState extends State<CategoryTabWidget>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
+  List<CarCategoryModel> list = List.from(CarCategoryModel.list);
   @override
   void initState() {
+    list.insert(0, CarCategoryModel(name: 'All', id: -1, image: ''));
     _tabController = TabController(
-      length: CarCategoryModel.list.length,
+      length: list.length,
       vsync: this,
     );
     super.initState();
@@ -31,9 +33,9 @@ class _CategoryTabWidgetState extends State<CategoryTabWidget>
       padding: EdgeInsets.zero,
       tabAlignment: TabAlignment.start,
       tabs: List.generate(
-        CarCategoryModel.list.length,
+        list.length,
         (index) {
-          final category = CarCategoryModel.list[index];
+          final category = list[index];
           return Tab(
             child: Text(category.name),
           );

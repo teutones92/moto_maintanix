@@ -3,9 +3,9 @@ import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/service/object_box_service.dart';
 import 'package:moto_maintanix/views/home/home.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ObjectBoxService.init();
+  await ObjectBoxService.init();
   runApp(const MyApp());
 }
 

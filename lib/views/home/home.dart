@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => NavigatorX.push(context, const AddCar()),
+        backgroundColor: const Color.fromARGB(255, 1, 0, 70),
         label: SizedBox(
           width: size.width - 75,
           child: const Center(child: Text('Add Car')),
