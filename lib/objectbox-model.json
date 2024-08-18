@@ -1,0 +1,199 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:2143468729157234447",
+      "lastPropertyId": "9:5520691666649990511",
+      "name": "CarItemModel",
+      "properties": [
+        {
+          "id": "1:7532295429165787806",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "2:6132867069811065524",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:6797039972357593740",
+          "name": "carType",
+          "type": 6
+        },
+        {
+          "id": "4:1333033025322800989",
+          "name": "brand",
+          "type": 9
+        },
+        {
+          "id": "5:3529025154377980601",
+          "name": "model",
+          "type": 9
+        },
+        {
+          "id": "6:2157097316402982759",
+          "name": "year",
+          "type": 9
+        },
+        {
+          "id": "7:3332987510127743735",
+          "name": "color",
+          "type": 9
+        },
+        {
+          "id": "8:544326401253182694",
+          "name": "plate",
+          "type": 9
+        },
+        {
+          "id": "9:5520691666649990511",
+          "name": "image",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:6951699321459603610",
+      "lastPropertyId": "5:8277605962992648352",
+      "name": "MaintCostTable",
+      "properties": [
+        {
+          "id": "1:701251062771022127",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "2:9080227805548565066",
+          "name": "vehicleId",
+          "type": 6
+        },
+        {
+          "id": "3:5378238735152157589",
+          "name": "maintId",
+          "type": 6
+        },
+        {
+          "id": "4:4767307005193527021",
+          "name": "cost",
+          "type": 8
+        },
+        {
+          "id": "5:8277605962992648352",
+          "name": "part",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:4975077510805709139",
+      "lastPropertyId": "7:3049124428808124155",
+      "name": "MaintReminderModel",
+      "properties": [
+        {
+          "id": "1:8935045673645063422",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "2:7461977776641264340",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "3:6489550675616243176",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "4:187793988736406032",
+          "name": "date",
+          "type": 9
+        },
+        {
+          "id": "5:1568610055736704113",
+          "name": "completed",
+          "type": 1
+        },
+        {
+          "id": "6:6832108749091402075",
+          "name": "reminderStatus",
+          "type": 1
+        },
+        {
+          "id": "7:3049124428808124155",
+          "name": "vehicleId",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:922210411738223884",
+      "lastPropertyId": "8:3922239550191900808",
+      "name": "MaintTable",
+      "properties": [
+        {
+          "id": "1:8587613124885100277",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "2:7686673212471648229",
+          "name": "maintDate",
+          "type": 9
+        },
+        {
+          "id": "3:1704277275887225551",
+          "name": "vehicleId",
+          "type": 6
+        },
+        {
+          "id": "4:3825558881634252810",
+          "name": "maintType",
+          "type": 9
+        },
+        {
+          "id": "5:7228783798925391487",
+          "name": "maintDescription",
+          "type": 9
+        },
+        {
+          "id": "6:5538557568110005203",
+          "name": "otherNotes",
+          "type": 9
+        },
+        {
+          "id": "7:6523546566896593485",
+          "name": "maintStatus",
+          "type": 9
+        },
+        {
+          "id": "8:3922239550191900808",
+          "name": "attachedFiles",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "4:922210411738223884",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
