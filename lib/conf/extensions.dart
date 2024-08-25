@@ -5,6 +5,8 @@ import 'package:moto_maintanix/conf/flutter_conf.dart';
 class ThemeX extends Cubit<ThemeMode> {
   ThemeX() : super(ThemeMode.system);
 
+  static const floatingButtonColor = Color.fromARGB(212, 46, 161, 0);
+
   void toggleTheme() =>
       emit(state == ThemeMode.light ? ThemeMode.dark : ThemeMode.light);
 
@@ -12,27 +14,32 @@ class ThemeX extends Cubit<ThemeMode> {
     emit(isDark ? ThemeMode.dark : ThemeMode.light);
   }
 
+  static const _scaffoldColor = Color.fromARGB(255, 12, 18, 32);
+
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.black,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.grey,
     ),
-    scaffoldBackgroundColor: const Color.fromARGB(255, 12, 18, 32),
+    scaffoldBackgroundColor: _scaffoldColor,
     cardTheme: const CardTheme(
       color: Colors.grey,
       elevation: 8,
+    ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: _scaffoldColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         elevation: 8,
         backgroundColor: Colors.grey.shade900,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(10),
         ),
         foregroundColor: Colors.white,
         shadowColor: Colors.grey.shade900,
-        minimumSize: const Size(100, 54),
+        minimumSize: const Size(double.infinity, 55),
         disabledBackgroundColor: Colors.grey.shade400,
       ),
     ),
@@ -48,13 +55,14 @@ class ThemeX extends Cubit<ThemeMode> {
     ),
     iconTheme: const IconThemeData(color: Colors.white),
     listTileTheme: const ListTileThemeData(textColor: Colors.white),
-    inputDecorationTheme: const InputDecorationTheme(
-      hintStyle: TextStyle(color: Colors.white),
-      labelStyle: TextStyle(color: Colors.white),
-      fillColor: Colors.transparent,
+    inputDecorationTheme: InputDecorationTheme(
+      hintStyle: const TextStyle(color: Colors.white),
+      labelStyle: const TextStyle(color: Colors.white),
+      fillColor: Colors.grey.shade500,
       filled: true,
       iconColor: Colors.white,
-      border: OutlineInputBorder(
+      prefixIconColor: Colors.white,
+      border: const OutlineInputBorder(
         borderSide: BorderSide(color: Colors.white),
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
@@ -96,9 +104,10 @@ class ThemeX extends Cubit<ThemeMode> {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         elevation: 8,
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.grey.shade200,
+        minimumSize: const Size(double.infinity, 55),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(10),
         ),
         foregroundColor: Colors.black,
       ),
@@ -113,6 +122,7 @@ class ThemeX extends Cubit<ThemeMode> {
     appBarTheme: const AppBarTheme(
       foregroundColor: Colors.black,
     ),
+    cardTheme: const CardTheme(elevation: 8),
     iconTheme: const IconThemeData(color: Colors.black),
     textTheme: GoogleFonts.robotoTextTheme(
       const TextTheme(

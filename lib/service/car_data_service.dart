@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:moto_maintanix/models/repo/cars_data_model/cars_data_model.dart';
+import 'package:moto_maintanix/models/external_server/cars_data_model/cars_data_model.dart';
 
 class CarDataService {
   static Future<List<CarsDataModel>> getCarsData() async {

@@ -11,6 +11,13 @@ class NavigatorX {
     );
   }
 
+  static void pushNoFade(BuildContext context, Widget widget) => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => widget,
+        ),
+      );
+
   static void pop(BuildContext context) {
     Navigator.pop(context);
   }

@@ -1,10 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class ImagePickerBloc extends Cubit<File?> {
+class ImagePickerBloc extends Cubit<Uint8List?> {
   ImagePickerBloc() : super(null);
 
   void pickImage(ImageSource source) async {
@@ -24,7 +26,21 @@ class ImagePickerBloc extends Cubit<File?> {
     final ImagePicker picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
     if (pickedFile != null) {
-      emit(File(pickedFile.path));
+      pickedFile.readAsBytes().then((value) {
+        emit(value);
+        // emit(_convertToBase64(File(pickedFile.path)));
+      });
+    }
+  }
+
+  String _convertToBase64(File file) {
+    final bytes = file.readAsBytesSync();
+    return base64Encode(bytes);
+  }
+
+  void setImage(String? image) {
+    if (image != null) {
+      emit(base64Decode(image));
     }
   }
 

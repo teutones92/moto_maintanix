@@ -14,62 +14,19 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'models/repo/car_table/car_item_model.dart';
-import 'models/repo/maint_cost_table/maint_cost_table.dart';
-import 'models/repo/maint_reminder_table/maint_reminder_model.dart';
-import 'models/repo/maint_table/maint_table.dart';
+import 'models/repo/car_table_model/car_table_model.dart';
+import 'models/repo/files_table_mode/files_table_mode.dart';
+import 'models/repo/maintenances_tables/maint_cost_table/maint_cost_table.dart';
+import 'models/repo/maintenances_tables/maint_reminder_table/maint_reminder_table.dart';
+import 'models/repo/maintenances_tables/maint_table/maint_table.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(1, 2644736726534721272),
-      name: 'CarItemModel',
-      lastPropertyId: const obx_int.IdUid(7, 4485877392755500512),
-      flags: 0,
-      properties: <obx_int.ModelProperty>[
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 4386341857696236091),
-            name: 'id',
-            type: 6,
-            flags: 129),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 5384326123355209243),
-            name: 'carType',
-            type: 6,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 730701198497241027),
-            name: 'brand',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 5010530399354534946),
-            name: 'model',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 3093321621960778265),
-            name: 'year',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 4761827788490456835),
-            name: 'notes',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 4485877392755500512),
-            name: 'image',
-            type: 9,
-            flags: 0)
-      ],
-      relations: <obx_int.ModelRelation>[],
-      backlinks: <obx_int.ModelBacklink>[]),
-  obx_int.ModelEntity(
       id: const obx_int.IdUid(2, 1424666044304327153),
       name: 'MaintCostTable',
-      lastPropertyId: const obx_int.IdUid(5, 4740663263791583137),
+      lastPropertyId: const obx_int.IdUid(6, 2439712500234177020),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -96,49 +53,10 @@ final _entities = <obx_int.ModelEntity>[
             id: const obx_int.IdUid(5, 4740663263791583137),
             name: 'part',
             type: 9,
-            flags: 0)
-      ],
-      relations: <obx_int.ModelRelation>[],
-      backlinks: <obx_int.ModelBacklink>[]),
-  obx_int.ModelEntity(
-      id: const obx_int.IdUid(3, 3399358081829213400),
-      name: 'MaintReminderModel',
-      lastPropertyId: const obx_int.IdUid(7, 3907269406891412037),
-      flags: 0,
-      properties: <obx_int.ModelProperty>[
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 3143918936592833977),
-            name: 'id',
-            type: 6,
-            flags: 129),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 6180255291990467718),
-            name: 'title',
-            type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 2362591484650481106),
-            name: 'description',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 4055280715756766388),
-            name: 'date',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 7410165466750992518),
-            name: 'completed',
-            type: 1,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 6423177677198498482),
-            name: 'reminderStatus',
-            type: 1,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 3907269406891412037),
-            name: 'vehicleId',
+            id: const obx_int.IdUid(6, 2439712500234177020),
+            name: 'userId',
             type: 6,
             flags: 0)
       ],
@@ -147,7 +65,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(4, 4427088337538947801),
       name: 'MaintTable',
-      lastPropertyId: const obx_int.IdUid(8, 1313382227650033690),
+      lastPropertyId: const obx_int.IdUid(12, 3135678822635803654),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -181,13 +99,175 @@ final _entities = <obx_int.ModelEntity>[
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 3475401505067336060),
-            name: 'maintStatus',
+            id: const obx_int.IdUid(9, 7216408187764464645),
+            name: 'carOdometer',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(10, 3661592457463688249),
+            name: 'finishedTime',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(8, 1313382227650033690),
-            name: 'attachedFiles',
+            id: const obx_int.IdUid(11, 8732022990752437760),
+            name: 'nextMaintDate',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(12, 3135678822635803654),
+            name: 'userId',
+            type: 6,
+            flags: 0)
+      ],
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(5, 3662089296111780778),
+      name: 'CarTableModel',
+      lastPropertyId: const obx_int.IdUid(8, 2270323637616794767),
+      flags: 0,
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 6593491645430842600),
+            name: 'id',
+            type: 6,
+            flags: 129),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 8617963816646772202),
+            name: 'carType',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 9043332186369132959),
+            name: 'brand',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 7152304848566004100),
+            name: 'model',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(5, 8117436564481639508),
+            name: 'year',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(6, 762183919253808380),
+            name: 'notes',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(7, 8918443342793704093),
+            name: 'image',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(8, 2270323637616794767),
+            name: 'userId',
+            type: 6,
+            flags: 0)
+      ],
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(7, 2329443081843615864),
+      name: 'MaintReminderTable',
+      lastPropertyId: const obx_int.IdUid(10, 4684876427533561082),
+      flags: 0,
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 2504530562065141610),
+            name: 'id',
+            type: 6,
+            flags: 129),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 3614911884667216387),
+            name: 'userId',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 2497471380371939228),
+            name: 'title',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 2155686132274645314),
+            name: 'vehicleId',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(5, 3493281784976319226),
+            name: 'maintId',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(6, 2448601072826686464),
+            name: 'description',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(7, 2410728798142040259),
+            name: 'date',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(8, 2229826617047357490),
+            name: 'completed',
+            type: 1,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(9, 3125113695824452473),
+            name: 'reminderStatus',
+            type: 1,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(10, 4684876427533561082),
+            name: 'addedToCalendar',
+            type: 1,
+            flags: 0)
+      ],
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(8, 8304885754923632987),
+      name: 'FilesTableModel',
+      lastPropertyId: const obx_int.IdUid(7, 4445885597879132843),
+      flags: 0,
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 551032539130799343),
+            name: 'id',
+            type: 6,
+            flags: 129),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 8049073990728865038),
+            name: 'vehicleId',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 6909812987593710223),
+            name: 'userId',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 3137178502800852041),
+            name: 'maintId',
+            type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(5, 8439139141931861353),
+            name: 'title',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(6, 7561020313215125398),
+            name: 'file',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(7, 4445885597879132843),
+            name: 'attachedDate',
             type: 9,
             flags: 0)
       ],
@@ -230,79 +310,51 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(4, 4427088337538947801),
+      lastEntityId: const obx_int.IdUid(8, 8304885754923632987),
       lastIndexId: const obx_int.IdUid(0, 0),
       lastRelationId: const obx_int.IdUid(0, 0),
       lastSequenceId: const obx_int.IdUid(0, 0),
-      retiredEntityUids: const [],
+      retiredEntityUids: const [
+        2644736726534721272,
+        3399358081829213400,
+        3390064304362351755
+      ],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
+      retiredPropertyUids: const [
+        3475401505067336060,
+        4386341857696236091,
+        5384326123355209243,
+        730701198497241027,
+        5010530399354534946,
+        3093321621960778265,
+        4761827788490456835,
+        4485877392755500512,
+        1313382227650033690,
+        3143918936592833977,
+        6180255291990467718,
+        2362591484650481106,
+        4055280715756766388,
+        7410165466750992518,
+        6423177677198498482,
+        3907269406891412037,
+        3015020164168092650,
+        9071574891364686168,
+        1795590409131994042,
+        6484666220602619314,
+        1619481031062389486,
+        8829642434509191337,
+        3561422699723452406,
+        380719787276379208,
+        890952021802726220
+      ],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
 
   final bindings = <Type, obx_int.EntityDefinition>{
-    CarItemModel: obx_int.EntityDefinition<CarItemModel>(
-        model: _entities[0],
-        toOneRelations: (CarItemModel object) => [],
-        toManyRelations: (CarItemModel object) => {},
-        getId: (CarItemModel object) => object.id,
-        setId: (CarItemModel object, int id) {
-          object.id = id;
-        },
-        objectToFB: (CarItemModel object, fb.Builder fbb) {
-          final brandOffset =
-              object.brand == null ? null : fbb.writeString(object.brand!);
-          final modelOffset =
-              object.model == null ? null : fbb.writeString(object.model!);
-          final yearOffset =
-              object.year == null ? null : fbb.writeString(object.year!);
-          final notesOffset =
-              object.notes == null ? null : fbb.writeString(object.notes!);
-          final imageOffset =
-              object.image == null ? null : fbb.writeString(object.image!);
-          fbb.startTable(8);
-          fbb.addInt64(0, object.id ?? 0);
-          fbb.addInt64(1, object.carType);
-          fbb.addOffset(2, brandOffset);
-          fbb.addOffset(3, modelOffset);
-          fbb.addOffset(4, yearOffset);
-          fbb.addOffset(5, notesOffset);
-          fbb.addOffset(6, imageOffset);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (obx.Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-          final idParam =
-              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
-          final notesParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 14);
-          final carTypeParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
-          final brandParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 8);
-          final modelParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 10);
-          final yearParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 12);
-          final imageParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 16);
-          final object = CarItemModel(
-              id: idParam,
-              notes: notesParam,
-              carType: carTypeParam,
-              brand: brandParam,
-              model: modelParam,
-              year: yearParam,
-              image: imageParam);
-
-          return object;
-        }),
     MaintCostTable: obx_int.EntityDefinition<MaintCostTable>(
-        model: _entities[1],
+        model: _entities[0],
         toOneRelations: (MaintCostTable object) => [],
         toManyRelations: (MaintCostTable object) => {},
         getId: (MaintCostTable object) => object.id,
@@ -311,12 +363,13 @@ obx_int.ModelDefinition getObjectBoxModel() {
         },
         objectToFB: (MaintCostTable object, fb.Builder fbb) {
           final partOffset = fbb.writeString(object.part);
-          fbb.startTable(6);
+          fbb.startTable(7);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addInt64(1, object.vehicleId);
           fbb.addInt64(2, object.maintId);
           fbb.addFloat64(3, object.cost);
           fbb.addOffset(4, partOffset);
+          fbb.addInt64(5, object.userId);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -325,6 +378,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final rootOffset = buffer.derefObject(0);
           final idParam =
               const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
+          final userIdParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 14);
           final maintIdParam =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
           final vehicleIdParam =
@@ -335,6 +390,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
               .vTableGet(buffer, rootOffset, 12, '');
           final object = MaintCostTable(
               id: idParam,
+              userId: userIdParam,
               maintId: maintIdParam,
               vehicleId: vehicleIdParam,
               cost: costParam,
@@ -342,62 +398,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
 
           return object;
         }),
-    MaintReminderModel: obx_int.EntityDefinition<MaintReminderModel>(
-        model: _entities[2],
-        toOneRelations: (MaintReminderModel object) => [],
-        toManyRelations: (MaintReminderModel object) => {},
-        getId: (MaintReminderModel object) => object.id,
-        setId: (MaintReminderModel object, int id) {
-          object.id = id;
-        },
-        objectToFB: (MaintReminderModel object, fb.Builder fbb) {
-          final titleOffset = fbb.writeString(object.title);
-          final descriptionOffset = object.description == null
-              ? null
-              : fbb.writeString(object.description!);
-          final dateOffset = fbb.writeString(object.date);
-          fbb.startTable(8);
-          fbb.addInt64(0, object.id ?? 0);
-          fbb.addOffset(1, titleOffset);
-          fbb.addOffset(2, descriptionOffset);
-          fbb.addOffset(3, dateOffset);
-          fbb.addBool(4, object.completed);
-          fbb.addBool(5, object.reminderStatus);
-          fbb.addInt64(6, object.vehicleId);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (obx.Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-          final idParam =
-              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
-          final titleParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
-          final descriptionParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 8);
-          final dateParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 10, '');
-          final completedParam =
-              const fb.BoolReader().vTableGet(buffer, rootOffset, 12, false);
-          final reminderStatusParam =
-              const fb.BoolReader().vTableGet(buffer, rootOffset, 14, false);
-          final vehicleIdParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0);
-          final object = MaintReminderModel(
-              id: idParam,
-              title: titleParam,
-              description: descriptionParam,
-              date: dateParam,
-              completed: completedParam,
-              reminderStatus: reminderStatusParam,
-              vehicleId: vehicleIdParam);
-
-          return object;
-        }),
     MaintTable: obx_int.EntityDefinition<MaintTable>(
-        model: _entities[3],
+        model: _entities[1],
         toOneRelations: (MaintTable object) => [],
         toManyRelations: (MaintTable object) => {},
         getId: (MaintTable object) => object.id,
@@ -406,30 +408,28 @@ obx_int.ModelDefinition getObjectBoxModel() {
         },
         objectToFB: (MaintTable object, fb.Builder fbb) {
           final maintDateOffset = fbb.writeString(object.maintDate);
-          final maintTypeOffset = object.maintType == null
-              ? null
-              : fbb.writeString(object.maintType!);
+          final maintTypeOffset = fbb.writeString(object.maintType);
           final maintDescriptionOffset = object.maintDescription == null
               ? null
               : fbb.writeString(object.maintDescription!);
           final otherNotesOffset = object.otherNotes == null
               ? null
               : fbb.writeString(object.otherNotes!);
-          final maintStatusOffset = object.maintStatus == null
+          final finishedTimeOffset = object.finishedTime == null
               ? null
-              : fbb.writeString(object.maintStatus!);
-          final attachedFilesOffset = object.attachedFiles == null
-              ? null
-              : fbb.writeString(object.attachedFiles!);
-          fbb.startTable(9);
+              : fbb.writeString(object.finishedTime!);
+          final nextMaintDateOffset = fbb.writeString(object.nextMaintDate);
+          fbb.startTable(13);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addOffset(1, maintDateOffset);
           fbb.addInt64(2, object.vehicleId);
           fbb.addOffset(3, maintTypeOffset);
           fbb.addOffset(4, maintDescriptionOffset);
           fbb.addOffset(5, otherNotesOffset);
-          fbb.addOffset(6, maintStatusOffset);
-          fbb.addOffset(7, attachedFilesOffset);
+          fbb.addInt64(8, object.carOdometer);
+          fbb.addOffset(9, finishedTimeOffset);
+          fbb.addOffset(10, nextMaintDateOffset);
+          fbb.addInt64(11, object.userId);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -438,32 +438,216 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final rootOffset = buffer.derefObject(0);
           final idParam =
               const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
-          final maintDateParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
+          final userIdParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 26);
           final vehicleIdParam =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
           final maintTypeParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 10);
+              .vTableGet(buffer, rootOffset, 10, '');
           final maintDescriptionParam =
               const fb.StringReader(asciiOptimization: true)
                   .vTableGetNullable(buffer, rootOffset, 12);
+          final maintDateParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 6, '');
+          final nextMaintDateParam =
+              const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 24, '');
+          final carOdometerParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 20);
           final otherNotesParam = const fb.StringReader(asciiOptimization: true)
               .vTableGetNullable(buffer, rootOffset, 14);
-          final maintStatusParam =
+          final finishedTimeParam =
               const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 16);
-          final attachedFilesParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 18);
+                  .vTableGetNullable(buffer, rootOffset, 22);
           final object = MaintTable(
               id: idParam,
-              maintDate: maintDateParam,
+              userId: userIdParam,
               vehicleId: vehicleIdParam,
               maintType: maintTypeParam,
               maintDescription: maintDescriptionParam,
+              maintDate: maintDateParam,
+              nextMaintDate: nextMaintDateParam,
+              carOdometer: carOdometerParam,
               otherNotes: otherNotesParam,
-              maintStatus: maintStatusParam,
-              attachedFiles: attachedFilesParam);
+              finishedTime: finishedTimeParam);
+
+          return object;
+        }),
+    CarTableModel: obx_int.EntityDefinition<CarTableModel>(
+        model: _entities[2],
+        toOneRelations: (CarTableModel object) => [],
+        toManyRelations: (CarTableModel object) => {},
+        getId: (CarTableModel object) => object.id,
+        setId: (CarTableModel object, int id) {
+          object.id = id;
+        },
+        objectToFB: (CarTableModel object, fb.Builder fbb) {
+          final brandOffset = fbb.writeString(object.brand);
+          final modelOffset = fbb.writeString(object.model);
+          final yearOffset =
+              object.year == null ? null : fbb.writeString(object.year!);
+          final notesOffset =
+              object.notes == null ? null : fbb.writeString(object.notes!);
+          final imageOffset =
+              object.image == null ? null : fbb.writeString(object.image!);
+          fbb.startTable(9);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addInt64(1, object.carType);
+          fbb.addOffset(2, brandOffset);
+          fbb.addOffset(3, modelOffset);
+          fbb.addOffset(4, yearOffset);
+          fbb.addOffset(5, notesOffset);
+          fbb.addOffset(6, imageOffset);
+          fbb.addInt64(7, object.userId);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (obx.Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final idParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
+          final userIdParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 18);
+          final notesParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 14);
+          final carTypeParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
+          final brandParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 8, '');
+          final modelParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 10, '');
+          final yearParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 12);
+          final imageParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 16);
+          final object = CarTableModel(
+              id: idParam,
+              userId: userIdParam,
+              notes: notesParam,
+              carType: carTypeParam,
+              brand: brandParam,
+              model: modelParam,
+              year: yearParam,
+              image: imageParam);
+
+          return object;
+        }),
+    MaintReminderTable: obx_int.EntityDefinition<MaintReminderTable>(
+        model: _entities[3],
+        toOneRelations: (MaintReminderTable object) => [],
+        toManyRelations: (MaintReminderTable object) => {},
+        getId: (MaintReminderTable object) => object.id,
+        setId: (MaintReminderTable object, int id) {
+          object.id = id;
+        },
+        objectToFB: (MaintReminderTable object, fb.Builder fbb) {
+          final titleOffset = fbb.writeString(object.title);
+          final descriptionOffset = object.description == null
+              ? null
+              : fbb.writeString(object.description!);
+          final dateOffset = fbb.writeString(object.date);
+          fbb.startTable(11);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addInt64(1, object.userId);
+          fbb.addOffset(2, titleOffset);
+          fbb.addInt64(3, object.vehicleId);
+          fbb.addInt64(4, object.maintId);
+          fbb.addOffset(5, descriptionOffset);
+          fbb.addOffset(6, dateOffset);
+          fbb.addBool(7, object.completed);
+          fbb.addBool(8, object.reminderStatus);
+          fbb.addBool(9, object.addedToCalendar);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (obx.Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final idParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
+          final userIdParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 6);
+          final vehicleIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
+          final maintIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0);
+          final titleParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 8, '');
+          final descriptionParam =
+              const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 14);
+          final dateParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 16, '');
+          final completedParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 18, false);
+          final reminderStatusParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 20, false);
+          final addedToCalendarParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 22, false);
+          final object = MaintReminderTable(
+              id: idParam,
+              userId: userIdParam,
+              vehicleId: vehicleIdParam,
+              maintId: maintIdParam,
+              title: titleParam,
+              description: descriptionParam,
+              date: dateParam,
+              completed: completedParam,
+              reminderStatus: reminderStatusParam,
+              addedToCalendar: addedToCalendarParam);
+
+          return object;
+        }),
+    FilesTableModel: obx_int.EntityDefinition<FilesTableModel>(
+        model: _entities[4],
+        toOneRelations: (FilesTableModel object) => [],
+        toManyRelations: (FilesTableModel object) => {},
+        getId: (FilesTableModel object) => object.id,
+        setId: (FilesTableModel object, int id) {
+          object.id = id;
+        },
+        objectToFB: (FilesTableModel object, fb.Builder fbb) {
+          final titleOffset = fbb.writeString(object.title);
+          final fileOffset = fbb.writeString(object.file);
+          final attachedDateOffset = fbb.writeString(object.attachedDate);
+          fbb.startTable(8);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addInt64(1, object.vehicleId);
+          fbb.addInt64(2, object.userId);
+          fbb.addInt64(3, object.maintId);
+          fbb.addOffset(4, titleOffset);
+          fbb.addOffset(5, fileOffset);
+          fbb.addOffset(6, attachedDateOffset);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (obx.Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final idParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
+          final vehicleIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
+          final userIdParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 8);
+          final maintIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
+          final titleParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 12, '');
+          final fileParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 14, '');
+          final attachedDateParam =
+              const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 16, '');
+          final object = FilesTableModel(
+              id: idParam,
+              vehicleId: vehicleIdParam,
+              userId: userIdParam,
+              maintId: maintIdParam,
+              title: titleParam,
+              file: fileParam,
+              attachedDate: attachedDateParam);
 
           return object;
         })
@@ -472,122 +656,181 @@ obx_int.ModelDefinition getObjectBoxModel() {
   return obx_int.ModelDefinition(model, bindings);
 }
 
-/// [CarItemModel] entity fields to define ObjectBox queries.
-class CarItemModel_ {
-  /// See [CarItemModel.id].
-  static final id =
-      obx.QueryIntegerProperty<CarItemModel>(_entities[0].properties[0]);
-
-  /// See [CarItemModel.carType].
-  static final carType =
-      obx.QueryIntegerProperty<CarItemModel>(_entities[0].properties[1]);
-
-  /// See [CarItemModel.brand].
-  static final brand =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[2]);
-
-  /// See [CarItemModel.model].
-  static final model =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[3]);
-
-  /// See [CarItemModel.year].
-  static final year =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[4]);
-
-  /// See [CarItemModel.notes].
-  static final notes =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[5]);
-
-  /// See [CarItemModel.image].
-  static final image =
-      obx.QueryStringProperty<CarItemModel>(_entities[0].properties[6]);
-}
-
 /// [MaintCostTable] entity fields to define ObjectBox queries.
 class MaintCostTable_ {
   /// See [MaintCostTable.id].
   static final id =
-      obx.QueryIntegerProperty<MaintCostTable>(_entities[1].properties[0]);
+      obx.QueryIntegerProperty<MaintCostTable>(_entities[0].properties[0]);
 
   /// See [MaintCostTable.vehicleId].
   static final vehicleId =
-      obx.QueryIntegerProperty<MaintCostTable>(_entities[1].properties[1]);
+      obx.QueryIntegerProperty<MaintCostTable>(_entities[0].properties[1]);
 
   /// See [MaintCostTable.maintId].
   static final maintId =
-      obx.QueryIntegerProperty<MaintCostTable>(_entities[1].properties[2]);
+      obx.QueryIntegerProperty<MaintCostTable>(_entities[0].properties[2]);
 
   /// See [MaintCostTable.cost].
   static final cost =
-      obx.QueryDoubleProperty<MaintCostTable>(_entities[1].properties[3]);
+      obx.QueryDoubleProperty<MaintCostTable>(_entities[0].properties[3]);
 
   /// See [MaintCostTable.part].
   static final part =
-      obx.QueryStringProperty<MaintCostTable>(_entities[1].properties[4]);
-}
+      obx.QueryStringProperty<MaintCostTable>(_entities[0].properties[4]);
 
-/// [MaintReminderModel] entity fields to define ObjectBox queries.
-class MaintReminderModel_ {
-  /// See [MaintReminderModel.id].
-  static final id =
-      obx.QueryIntegerProperty<MaintReminderModel>(_entities[2].properties[0]);
-
-  /// See [MaintReminderModel.title].
-  static final title =
-      obx.QueryStringProperty<MaintReminderModel>(_entities[2].properties[1]);
-
-  /// See [MaintReminderModel.description].
-  static final description =
-      obx.QueryStringProperty<MaintReminderModel>(_entities[2].properties[2]);
-
-  /// See [MaintReminderModel.date].
-  static final date =
-      obx.QueryStringProperty<MaintReminderModel>(_entities[2].properties[3]);
-
-  /// See [MaintReminderModel.completed].
-  static final completed =
-      obx.QueryBooleanProperty<MaintReminderModel>(_entities[2].properties[4]);
-
-  /// See [MaintReminderModel.reminderStatus].
-  static final reminderStatus =
-      obx.QueryBooleanProperty<MaintReminderModel>(_entities[2].properties[5]);
-
-  /// See [MaintReminderModel.vehicleId].
-  static final vehicleId =
-      obx.QueryIntegerProperty<MaintReminderModel>(_entities[2].properties[6]);
+  /// See [MaintCostTable.userId].
+  static final userId =
+      obx.QueryIntegerProperty<MaintCostTable>(_entities[0].properties[5]);
 }
 
 /// [MaintTable] entity fields to define ObjectBox queries.
 class MaintTable_ {
   /// See [MaintTable.id].
   static final id =
-      obx.QueryIntegerProperty<MaintTable>(_entities[3].properties[0]);
+      obx.QueryIntegerProperty<MaintTable>(_entities[1].properties[0]);
 
   /// See [MaintTable.maintDate].
   static final maintDate =
-      obx.QueryStringProperty<MaintTable>(_entities[3].properties[1]);
+      obx.QueryStringProperty<MaintTable>(_entities[1].properties[1]);
 
   /// See [MaintTable.vehicleId].
   static final vehicleId =
-      obx.QueryIntegerProperty<MaintTable>(_entities[3].properties[2]);
+      obx.QueryIntegerProperty<MaintTable>(_entities[1].properties[2]);
 
   /// See [MaintTable.maintType].
   static final maintType =
-      obx.QueryStringProperty<MaintTable>(_entities[3].properties[3]);
+      obx.QueryStringProperty<MaintTable>(_entities[1].properties[3]);
 
   /// See [MaintTable.maintDescription].
   static final maintDescription =
-      obx.QueryStringProperty<MaintTable>(_entities[3].properties[4]);
+      obx.QueryStringProperty<MaintTable>(_entities[1].properties[4]);
 
   /// See [MaintTable.otherNotes].
   static final otherNotes =
-      obx.QueryStringProperty<MaintTable>(_entities[3].properties[5]);
+      obx.QueryStringProperty<MaintTable>(_entities[1].properties[5]);
 
-  /// See [MaintTable.maintStatus].
-  static final maintStatus =
-      obx.QueryStringProperty<MaintTable>(_entities[3].properties[6]);
+  /// See [MaintTable.carOdometer].
+  static final carOdometer =
+      obx.QueryIntegerProperty<MaintTable>(_entities[1].properties[6]);
 
-  /// See [MaintTable.attachedFiles].
-  static final attachedFiles =
-      obx.QueryStringProperty<MaintTable>(_entities[3].properties[7]);
+  /// See [MaintTable.finishedTime].
+  static final finishedTime =
+      obx.QueryStringProperty<MaintTable>(_entities[1].properties[7]);
+
+  /// See [MaintTable.nextMaintDate].
+  static final nextMaintDate =
+      obx.QueryStringProperty<MaintTable>(_entities[1].properties[8]);
+
+  /// See [MaintTable.userId].
+  static final userId =
+      obx.QueryIntegerProperty<MaintTable>(_entities[1].properties[9]);
+}
+
+/// [CarTableModel] entity fields to define ObjectBox queries.
+class CarTableModel_ {
+  /// See [CarTableModel.id].
+  static final id =
+      obx.QueryIntegerProperty<CarTableModel>(_entities[2].properties[0]);
+
+  /// See [CarTableModel.carType].
+  static final carType =
+      obx.QueryIntegerProperty<CarTableModel>(_entities[2].properties[1]);
+
+  /// See [CarTableModel.brand].
+  static final brand =
+      obx.QueryStringProperty<CarTableModel>(_entities[2].properties[2]);
+
+  /// See [CarTableModel.model].
+  static final model =
+      obx.QueryStringProperty<CarTableModel>(_entities[2].properties[3]);
+
+  /// See [CarTableModel.year].
+  static final year =
+      obx.QueryStringProperty<CarTableModel>(_entities[2].properties[4]);
+
+  /// See [CarTableModel.notes].
+  static final notes =
+      obx.QueryStringProperty<CarTableModel>(_entities[2].properties[5]);
+
+  /// See [CarTableModel.image].
+  static final image =
+      obx.QueryStringProperty<CarTableModel>(_entities[2].properties[6]);
+
+  /// See [CarTableModel.userId].
+  static final userId =
+      obx.QueryIntegerProperty<CarTableModel>(_entities[2].properties[7]);
+}
+
+/// [MaintReminderTable] entity fields to define ObjectBox queries.
+class MaintReminderTable_ {
+  /// See [MaintReminderTable.id].
+  static final id =
+      obx.QueryIntegerProperty<MaintReminderTable>(_entities[3].properties[0]);
+
+  /// See [MaintReminderTable.userId].
+  static final userId =
+      obx.QueryIntegerProperty<MaintReminderTable>(_entities[3].properties[1]);
+
+  /// See [MaintReminderTable.title].
+  static final title =
+      obx.QueryStringProperty<MaintReminderTable>(_entities[3].properties[2]);
+
+  /// See [MaintReminderTable.vehicleId].
+  static final vehicleId =
+      obx.QueryIntegerProperty<MaintReminderTable>(_entities[3].properties[3]);
+
+  /// See [MaintReminderTable.maintId].
+  static final maintId =
+      obx.QueryIntegerProperty<MaintReminderTable>(_entities[3].properties[4]);
+
+  /// See [MaintReminderTable.description].
+  static final description =
+      obx.QueryStringProperty<MaintReminderTable>(_entities[3].properties[5]);
+
+  /// See [MaintReminderTable.date].
+  static final date =
+      obx.QueryStringProperty<MaintReminderTable>(_entities[3].properties[6]);
+
+  /// See [MaintReminderTable.completed].
+  static final completed =
+      obx.QueryBooleanProperty<MaintReminderTable>(_entities[3].properties[7]);
+
+  /// See [MaintReminderTable.reminderStatus].
+  static final reminderStatus =
+      obx.QueryBooleanProperty<MaintReminderTable>(_entities[3].properties[8]);
+
+  /// See [MaintReminderTable.addedToCalendar].
+  static final addedToCalendar =
+      obx.QueryBooleanProperty<MaintReminderTable>(_entities[3].properties[9]);
+}
+
+/// [FilesTableModel] entity fields to define ObjectBox queries.
+class FilesTableModel_ {
+  /// See [FilesTableModel.id].
+  static final id =
+      obx.QueryIntegerProperty<FilesTableModel>(_entities[4].properties[0]);
+
+  /// See [FilesTableModel.vehicleId].
+  static final vehicleId =
+      obx.QueryIntegerProperty<FilesTableModel>(_entities[4].properties[1]);
+
+  /// See [FilesTableModel.userId].
+  static final userId =
+      obx.QueryIntegerProperty<FilesTableModel>(_entities[4].properties[2]);
+
+  /// See [FilesTableModel.maintId].
+  static final maintId =
+      obx.QueryIntegerProperty<FilesTableModel>(_entities[4].properties[3]);
+
+  /// See [FilesTableModel.title].
+  static final title =
+      obx.QueryStringProperty<FilesTableModel>(_entities[4].properties[4]);
+
+  /// See [FilesTableModel.file].
+  static final file =
+      obx.QueryStringProperty<FilesTableModel>(_entities[4].properties[5]);
+
+  /// See [FilesTableModel.attachedDate].
+  static final attachedDate =
+      obx.QueryStringProperty<FilesTableModel>(_entities[4].properties[6]);
 }

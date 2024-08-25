@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/service/object_box_service.dart';
-import 'package:moto_maintanix/views/home/home.dart';
+import 'package:moto_maintanix/views/home_view/home.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  tz.initializeTimeZones();
   await ObjectBoxService.init();
   runApp(const MyApp());
 }

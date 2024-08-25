@@ -1,4 +1,8 @@
-import 'package:moto_maintanix/models/repo/car_table/car_item_model.dart';
+import 'package:moto_maintanix/models/repo/car_table_model/car_table_model.dart';
+import 'package:moto_maintanix/models/repo/files_table_mode/files_table_mode.dart';
+import 'package:moto_maintanix/models/repo/maintenances_tables/maint_cost_table/maint_cost_table.dart';
+import 'package:moto_maintanix/models/repo/maintenances_tables/maint_reminder_table/maint_reminder_table.dart';
+import 'package:moto_maintanix/models/repo/maintenances_tables/maint_table/maint_table.dart';
 import 'package:moto_maintanix/objectbox.g.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -20,32 +24,134 @@ class ObjectBoxService {
   // Initialize ObjectBoxService
   static Future<void> init() async => objectbox = await _createDB();
 
-  int createOrUpdateCarRegister(CarItemModel carItemModel) {
-    return _store.box<CarItemModel>().put(carItemModel);
+  //** CRUD operations **\\
+
+  // Create or update a car register
+  int createOrUpdateCarRegister(CarTableModel carItemModel) {
+    return _store.box<CarTableModel>().put(carItemModel);
   }
 
-  void createOrUpdateMaintReminder(MaintReminderModel_ maintReminderModel) {
-    _store.box<MaintReminderModel_>().put(maintReminderModel);
+  // Create or update a maintenance record
+  int createOrUpdateCarMaintenance(MaintTable maintTable) {
+    return _store.box<MaintTable>().put(maintTable);
   }
 
-  void deleteCarRegister(int id) {
-    _store.box<CarItemModel_>().remove(id);
+  // Create or update a maintenance cost record
+  int createOrUpdateMaintCostRecord(MaintCostTable maintCostTable) {
+    return _store.box<MaintCostTable>().put(maintCostTable);
   }
 
+  // Create or update a maintenance reminder
+  int createOrUpdateMaintReminder(MaintReminderTable maintReminderModel) {
+    return _store.box<MaintReminderTable>().put(maintReminderModel);
+  }
+
+  // Create or update a file record in the database
+  int createOrUpdateFile(FilesTableModel file) {
+    return _store.box<FilesTableModel>().put(file);
+  }
+
+  // Get all car registers
+  List<CarTableModel> getCarItems() {
+    return _store.box<CarTableModel>().getAll();
+  }
+
+  // Get all maintenance records
+  List<MaintTable> getMaintRecords(int vehicleId) {
+    return _store
+        .box<MaintTable>()
+        .query(MaintTable_.vehicleId.equals(vehicleId))
+        .build()
+        .find();
+  }
+
+  // Get all maintenance cost records
+  List<MaintCostTable> getMaintCostRecords(
+      {required int vehicleId, required int maintId}) {
+    return _store
+        .box<MaintCostTable>()
+        .query(
+          MaintCostTable_.vehicleId.equals(vehicleId) &
+              MaintCostTable_.maintId.equals(maintId),
+        )
+        .build()
+        .find();
+  }
+
+  // Get the maintenance reminders
+  List<MaintReminderTable> getMaintReminders(
+      {required int vehicleId, required int maintId}) {
+    return _store
+        .box<MaintReminderTable>()
+        .query(
+          MaintReminderTable_.vehicleId.equals(vehicleId) &
+              MaintReminderTable_.maintId.equals(maintId),
+        )
+        .build()
+        .find();
+  }
+
+  // Get all files attached to a maintenance record
+  List<FilesTableModel> getMaintFiles(
+      {required int vehicleId, required int maintId}) {
+    return _store
+        .box<FilesTableModel>()
+        .query(
+          FilesTableModel_.vehicleId.equals(vehicleId) &
+              FilesTableModel_.maintId.equals(maintId),
+        )
+        .build()
+        .find();
+  }
+
+  // // Get a car register by id
+  // CarItemModel_? getCarItem(int id) => _store.box<CarItemModel_>().get(id);
+
+  // MaintReminderModel_? getMaintReminder(int id) =>
+  //     _store.box<MaintReminderModel_>().get(id);
+
+  // Delete a car register
+  void deleteCarAndAllRegistersRelatedToIt(int id) {
+    _store
+        .box<MaintTable>()
+        .query(MaintTable_.vehicleId.equals(id))
+        .build()
+        .remove();
+    _store
+        .box<MaintCostTable>()
+        .query(MaintCostTable_.vehicleId.equals(id))
+        .build()
+        .remove();
+    _store
+        .box<MaintReminderTable>()
+        .query(MaintReminderTable_.vehicleId.equals(id))
+        .build()
+        .remove();
+    _store
+        .box<FilesTableModel>()
+        .query(FilesTableModel_.vehicleId.equals(id))
+        .build()
+        .remove();
+    _store.box<CarTableModel>().remove(id);
+  }
+
+  // Delete a maintenance record
+  void deleteCarMaintenance(int id) {
+    _store.box<MaintTable>().remove(id);
+  }
+
+  // Delete a maintenance cost record
+  void deleteMaintCostRecord(int id) {
+    _store.box<MaintCostTable>().remove(id);
+  }
+
+  // Delete a maintenance reminder
   void deleteMaintReminder(int id) {
-    _store.box<MaintReminderModel_>().remove(id);
+    _store.box<MaintReminderTable_>().remove(id);
   }
 
-  List<CarItemModel> getCarItems() {
-    return _store.box<CarItemModel>().getAll();
+  // Delete a file record
+  void deleteFile(int id) {
+    _store.box<FilesTableModel>().remove(id);
   }
-
-  List<MaintReminderModel_> getMaintReminders() {
-    return _store.box<MaintReminderModel_>().getAll();
-  }
-
-  CarItemModel_? getCarItem(int id) => _store.box<CarItemModel_>().get(id);
-
-  MaintReminderModel_? getMaintReminder(int id) =>
-      _store.box<MaintReminderModel_>().get(id);
 }
