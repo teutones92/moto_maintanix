@@ -44,7 +44,7 @@
     },
     {
       "id": "4:4427088337538947801",
-      "lastPropertyId": "12:3135678822635803654",
+      "lastPropertyId": "13:6603774693108901853",
       "name": "MaintTable",
       "properties": [
         {
@@ -97,6 +97,11 @@
           "id": "12:3135678822635803654",
           "name": "userId",
           "type": 6
+        },
+        {
+          "id": "13:6603774693108901853",
+          "name": "location",
+          "type": 9
         }
       ],
       "relations": []
@@ -152,7 +157,7 @@
     },
     {
       "id": "7:2329443081843615864",
-      "lastPropertyId": "11:4174107583062188541",
+      "lastPropertyId": "12:8817738892883242796",
       "name": "MaintReminderTable",
       "properties": [
         {
@@ -209,6 +214,11 @@
         {
           "id": "11:4174107583062188541",
           "name": "calendarEventId",
+          "type": 9
+        },
+        {
+          "id": "12:8817738892883242796",
+          "name": "location",
           "type": 9
         }
       ],

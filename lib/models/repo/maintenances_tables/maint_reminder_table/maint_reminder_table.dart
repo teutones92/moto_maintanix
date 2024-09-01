@@ -11,6 +11,7 @@ class MaintReminderTable {
   String title;
   String? description;
   String date;
+  String? location;
   bool completed;
   bool reminderStatus;
   bool addedToCalendar;
@@ -24,6 +25,7 @@ class MaintReminderTable {
     required this.title,
     required this.description,
     required this.date,
+    required this.location,
     required this.completed,
     required this.reminderStatus,
     required this.addedToCalendar,
@@ -36,6 +38,7 @@ class MaintReminderTable {
       title: json['title'],
       description: json['description'],
       date: json['date'],
+      location: json['location'],
       completed: json['completed'],
       reminderStatus: json['reminder_status'],
       addedToCalendar: json['added_to_calendar'],
@@ -52,6 +55,7 @@ class MaintReminderTable {
       'title': title,
       'description': description,
       'date': date,
+      'location': location,
       'completed': completed,
       'reminder_status': reminderStatus,
       'added_to_calendar': addedToCalendar,
@@ -70,6 +74,7 @@ class MaintReminderTable {
       title: mrt.title,
       description: mrt.description,
       date: mrt.date,
+      location: mrt.location,
       completed: mrt.completed,
       reminderStatus: mrt.reminderStatus,
       addedToCalendar: mrt.addedToCalendar,

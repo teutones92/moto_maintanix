@@ -11,6 +11,7 @@ class MaintTable {
   String? maintDescription;
   String maintDate; // mm/dd/yyyy
   String nextMaintDate; // mm/dd/yyyy
+  String location; // mm/dd/yyyy
   int? carOdometer;
   String? finishedTime;
   String? otherNotes;
@@ -23,6 +24,7 @@ class MaintTable {
     this.maintDescription,
     required this.maintDate,
     required this.nextMaintDate,
+    required this.location,
     this.carOdometer,
     this.otherNotes,
     this.finishedTime,
@@ -37,6 +39,7 @@ class MaintTable {
       maintDescription: json['maint_description'],
       maintDate: json['maint_date'],
       nextMaintDate: json['next_maint_date'],
+      location: json['location'],
       carOdometer: json['car_odometer'],
       finishedTime: json['finished_time'],
       otherNotes: json['other_notes'],
@@ -52,6 +55,7 @@ class MaintTable {
       'maint_description': maintDescription,
       'maint_date': maintDate,
       'next_maint_date': nextMaintDate,
+      'location': location,
       'car_odometer': carOdometer,
       'finished_time': finishedTime,
       'other_notes': otherNotes,

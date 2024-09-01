@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moto_maintanix/blocs/car_maintenance_blocs/car_maint_bloc/car_maint_bloc.dart';
-import 'package:moto_maintanix/service/maint_reminder_service/maint_reminder_service.dart';
+import 'package:moto_maintanix/service/calendar_service/calendar_service.dart';
 import 'package:moto_maintanix/service/notifications_service/notifications_service.dart';
 
 import '../../../../../blocs/car_maintenance_blocs/car_maint_reminder_bloc/car_maint_reminder_bloc.dart';
@@ -23,7 +23,7 @@ class MaintRemainderButton extends StatelessWidget {
             return;
           }
           context.read<CarMaintReminderBloc>().getReminders(maintState);
-          await MaintReminderService.getCalendarPermission();
+          await CalendarService.getCalendarPermission();
           await NotificationService.nService.getNotificationPermission();
           if (!context.mounted) return;
           showModalBottomSheet(

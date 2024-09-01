@@ -32,6 +32,9 @@ class CarMaintBloc extends Cubit<MaintTable?> {
   // This is the controller for the maintenance estimated time
   final TextEditingController maintEstimatedTime = TextEditingController();
 
+  // This is the controller for the maintenance location field
+  final TextEditingController maintLocationCtrl = TextEditingController();
+
   void setState(BuildContext context, MaintTable maintTable) {
     context.read<CarMaintPartCostBloc>().getMaintCostList(
         vehicleId: maintTable.vehicleId, maintId: maintTable.id!);
@@ -61,6 +64,7 @@ class CarMaintBloc extends Cubit<MaintTable?> {
       maintDescription: maintDetailsController.text,
       maintDate: maintDateController.value,
       nextMaintDate: nextMaintDate.value,
+      location: maintLocationCtrl.text,
       carOdometer: int.parse(maintCarOdoController.text),
       otherNotes: maintOtherNotes.text,
       finishedTime: maintEstimatedTime.text,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/models/repo/maintenances_tables/maint_table/maint_table.dart';
+import 'package:moto_maintanix/service/calendar_service/calendar_service.dart';
 import 'package:moto_maintanix/service/maint_reminder_service/maint_reminder_service.dart';
 
 import '../../../conf/flutter_conf.dart';
@@ -26,6 +27,7 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
           title: maintTable.maintType,
           description: maintTable.maintDescription,
           date: maintTable.nextMaintDate,
+          location: maintTable.location,
           completed: state?.completed ?? false,
           reminderStatus: state?.reminderStatus ?? false,
           addedToCalendar: state?.addedToCalendar ?? false,
@@ -64,8 +66,26 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
   void addEventToCalendar(
       BuildContext context, bool add, MaintTable maintTable) async {
     final reminder =
-        await MaintReminderService.addOrRemoveReminderToCalendar(state!, add);
+        await CalendarService.addOrRemoveReminderToCalendar(state!);
     if (context.mounted) {
+      if (reminder == null) {
+        return;
+      }
+      saveReminder(
+          context: context, reminder: reminder, maintTable: maintTable);
+    }
+  }
+
+  void removeEventFromCalendar(
+      BuildContext context, MaintTable maintTable) async {
+    final reminder = state!;
+    final removed = await CalendarService.removeReminderFromCalendar(reminder);
+    if (context.mounted) {
+      if (!removed) {
+        return;
+      }
+      reminder.addedToCalendar = false;
+      reminder.calendarEventId = '';
       saveReminder(
           context: context, reminder: reminder, maintTable: maintTable);
     }

@@ -143,14 +143,20 @@ class SwitchersWidget extends StatelessWidget {
                                   );
                                 case 2:
                                   state.addedToCalendar = value;
-                                  context
-                                      .read<CarMaintReminderBloc>()
-                                      .addEventToCalendar(
-                                          context, value, maintState);
+                                  if (value) {
+                                    context
+                                        .read<CarMaintReminderBloc>()
+                                        .addEventToCalendar(
+                                            context, value, maintState);
+                                  } else {
+                                    context
+                                        .read<CarMaintReminderBloc>()
+                                        .removeEventFromCalendar(
+                                            context, maintState);
+                                  }
                               }
                             },
                     );
-                    // });
                   },
                 ),
               )

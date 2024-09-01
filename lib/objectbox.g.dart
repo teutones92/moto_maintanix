@@ -65,7 +65,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(4, 4427088337538947801),
       name: 'MaintTable',
-      lastPropertyId: const obx_int.IdUid(12, 3135678822635803654),
+      lastPropertyId: const obx_int.IdUid(13, 6603774693108901853),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -117,6 +117,11 @@ final _entities = <obx_int.ModelEntity>[
             id: const obx_int.IdUid(12, 3135678822635803654),
             name: 'userId',
             type: 6,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(13, 6603774693108901853),
+            name: 'location',
+            type: 9,
             flags: 0)
       ],
       relations: <obx_int.ModelRelation>[],
@@ -173,7 +178,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(7, 2329443081843615864),
       name: 'MaintReminderTable',
-      lastPropertyId: const obx_int.IdUid(11, 4174107583062188541),
+      lastPropertyId: const obx_int.IdUid(12, 8817738892883242796),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -229,6 +234,11 @@ final _entities = <obx_int.ModelEntity>[
         obx_int.ModelProperty(
             id: const obx_int.IdUid(11, 4174107583062188541),
             name: 'calendarEventId',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(12, 8817738892883242796),
+            name: 'location',
             type: 9,
             flags: 0)
       ],
@@ -429,7 +439,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
               ? null
               : fbb.writeString(object.finishedTime!);
           final nextMaintDateOffset = fbb.writeString(object.nextMaintDate);
-          fbb.startTable(13);
+          final locationOffset = fbb.writeString(object.location);
+          fbb.startTable(14);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addOffset(1, maintDateOffset);
           fbb.addInt64(2, object.vehicleId);
@@ -440,6 +451,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
           fbb.addOffset(9, finishedTimeOffset);
           fbb.addOffset(10, nextMaintDateOffset);
           fbb.addInt64(11, object.userId);
+          fbb.addOffset(12, locationOffset);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -462,6 +474,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final nextMaintDateParam =
               const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 24, '');
+          final locationParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 28, '');
           final carOdometerParam =
               const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 20);
           final otherNotesParam = const fb.StringReader(asciiOptimization: true)
@@ -477,6 +491,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
               maintDescription: maintDescriptionParam,
               maintDate: maintDateParam,
               nextMaintDate: nextMaintDateParam,
+              location: locationParam,
               carOdometer: carOdometerParam,
               otherNotes: otherNotesParam,
               finishedTime: finishedTimeParam);
@@ -558,7 +573,10 @@ obx_int.ModelDefinition getObjectBoxModel() {
               : fbb.writeString(object.description!);
           final dateOffset = fbb.writeString(object.date);
           final calendarEventIdOffset = fbb.writeString(object.calendarEventId);
-          fbb.startTable(12);
+          final locationOffset = object.location == null
+              ? null
+              : fbb.writeString(object.location!);
+          fbb.startTable(13);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addInt64(1, object.userId);
           fbb.addOffset(2, titleOffset);
@@ -570,6 +588,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
           fbb.addBool(8, object.reminderStatus);
           fbb.addBool(9, object.addedToCalendar);
           fbb.addOffset(10, calendarEventIdOffset);
+          fbb.addOffset(11, locationOffset);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -594,6 +613,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
                   .vTableGetNullable(buffer, rootOffset, 14);
           final dateParam = const fb.StringReader(asciiOptimization: true)
               .vTableGet(buffer, rootOffset, 16, '');
+          final locationParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 26);
           final completedParam =
               const fb.BoolReader().vTableGet(buffer, rootOffset, 18, false);
           final reminderStatusParam =
@@ -609,6 +630,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
               title: titleParam,
               description: descriptionParam,
               date: dateParam,
+              location: locationParam,
               completed: completedParam,
               reminderStatus: reminderStatusParam,
               addedToCalendar: addedToCalendarParam);
@@ -746,6 +768,10 @@ class MaintTable_ {
   /// See [MaintTable.userId].
   static final userId =
       obx.QueryIntegerProperty<MaintTable>(_entities[1].properties[9]);
+
+  /// See [MaintTable.location].
+  static final location =
+      obx.QueryStringProperty<MaintTable>(_entities[1].properties[10]);
 }
 
 /// [CarTableModel] entity fields to define ObjectBox queries.
@@ -828,6 +854,10 @@ class MaintReminderTable_ {
   /// See [MaintReminderTable.calendarEventId].
   static final calendarEventId =
       obx.QueryStringProperty<MaintReminderTable>(_entities[3].properties[10]);
+
+  /// See [MaintReminderTable.location].
+  static final location =
+      obx.QueryStringProperty<MaintReminderTable>(_entities[3].properties[11]);
 }
 
 /// [FilesTableModel] entity fields to define ObjectBox queries.
