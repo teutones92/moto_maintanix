@@ -72,6 +72,11 @@ class VehicleMaintenanceView extends StatelessWidget {
                   child: Card(
                     elevation: 10,
                     child: TextField(
+                      onChanged: (value) {
+                        context
+                            .read<CarListMaintBloc>()
+                            .searchMaintList(value, carItemModel.id!);
+                      },
                       decoration: InputDecoration(
                         hintText: 'Search Maintenance Records',
                         prefixIcon: const Icon(Icons.search),

@@ -72,6 +72,20 @@ class CarMaintBloc extends Cubit<MaintTable?> {
     final maintId = CarMaintService.addMaintRecord(maintTable);
     context.read<CarMaintPartCostBloc>().saveMaintCost(vehicleId, maintId);
     context.read<CarMaintFilesBloc>().saveMaintFile(vehicleId, maintId);
+    // context.read<CarMaintReminderBloc>().saveReminder(
+    //       context: context,
+    //       reminder: MaintReminderTable(
+    //           vehicleId: vehicleId,
+    //           maintId: maintId,
+    //           calendarEventId: '',
+    //           title: title,
+    //           description: description,
+    //           date: date,
+    //           location: location,
+    //           completed: completed,
+    //           reminderStatus: reminderStatus,
+    //           addedToCalendar: addedToCalendar),
+    //     );
     clearAll(context);
     context.read<CarListMaintBloc>().getMaintList(vehicleId);
     Navigator.of(context).pop();

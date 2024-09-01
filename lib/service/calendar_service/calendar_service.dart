@@ -14,6 +14,7 @@ class CalendarService {
     final dateTime = DateTime.parse(maintReminderTable.date);
     final newDate = dateTime.add(const Duration(hours: 10));
     final calendars = await SimpleCalendarEvent.getCalendars();
+    print(maintReminderTable.description);
     final eventId = await SimpleCalendarEvent.addEventToCalendar(
       model: CalendarEventModel(
         title: maintReminderTable.title,
