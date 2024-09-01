@@ -1,5 +1,5 @@
 import 'package:moto_maintanix/conf/flutter_conf.dart';
-import 'package:moto_maintanix/service/car_maint_service.dart';
+import 'package:moto_maintanix/service/car_maint_service/car_maint_service.dart';
 
 class SoonestMaintCubit extends Cubit<String> {
   SoonestMaintCubit() : super('');

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moto_maintanix/models/external_server/cars_data_model/cars_data_model.dart';
-import 'package:moto_maintanix/service/car_data_service.dart';
+import 'package:moto_maintanix/service/car_data_service/car_data_service.dart';
 
 class VehicleBrandBloc extends Cubit<CarsDataModel?> {
   VehicleBrandBloc() : super(null);

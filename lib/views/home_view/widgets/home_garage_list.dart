@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/conf/navigator_x.dart';
-import 'package:moto_maintanix/models/app/car_category_model.dart';
+import 'package:moto_maintanix/models/app/car_category_model/car_category_model.dart';
 import 'package:moto_maintanix/models/repo/car_table_model/car_table_model.dart';
-import 'package:moto_maintanix/views/add_car_view/add_car.dart';
+import 'package:moto_maintanix/views/add_edit_car_view/add_edit_car_view.dart';
 import 'package:moto_maintanix/views/vehicles_view/vehicle_maintenance_view/vehicle_maintenance_view.dart';
 
 class HomeGarageList extends StatefulWidget {
@@ -59,7 +59,7 @@ class _HomeGarageListState extends State<HomeGarageList> {
                         color: Colors.grey,
                       ),
                       Text(
-                        'No cars or selected car style in the garage',
+                        'No cars found',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.grey,
@@ -200,8 +200,8 @@ class _HomeGarageListState extends State<HomeGarageList> {
                                     child: Center(
                                       child: IconButton(
                                         onPressed: () {
-                                          NavigatorX.push(
-                                              context, AddCar(vehicle: car));
+                                          NavigatorX.push(context,
+                                              AddEditCar(vehicle: car));
                                         },
                                         constraints: const BoxConstraints(),
                                         padding: EdgeInsets.zero,

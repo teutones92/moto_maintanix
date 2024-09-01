@@ -152,7 +152,7 @@
     },
     {
       "id": "7:2329443081843615864",
-      "lastPropertyId": "10:4684876427533561082",
+      "lastPropertyId": "11:4174107583062188541",
       "name": "MaintReminderTable",
       "properties": [
         {
@@ -205,13 +205,18 @@
           "id": "10:4684876427533561082",
           "name": "addedToCalendar",
           "type": 1
+        },
+        {
+          "id": "11:4174107583062188541",
+          "name": "calendarEventId",
+          "type": 9
         }
       ],
       "relations": []
     },
     {
       "id": "8:8304885754923632987",
-      "lastPropertyId": "7:4445885597879132843",
+      "lastPropertyId": "8:3320792604246989971",
       "name": "FilesTableModel",
       "properties": [
         {
@@ -248,6 +253,11 @@
         {
           "id": "7:4445885597879132843",
           "name": "attachedDate",
+          "type": 9
+        },
+        {
+          "id": "8:3320792604246989971",
+          "name": "fileExtension",
           "type": 9
         }
       ],

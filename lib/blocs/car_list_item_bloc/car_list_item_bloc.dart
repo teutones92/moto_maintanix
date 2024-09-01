@@ -2,36 +2,34 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
-import 'package:moto_maintanix/models/app/car_category_model.dart';
+import 'package:moto_maintanix/models/app/car_category_model/car_category_model.dart';
 import 'package:moto_maintanix/models/external_server/cars_data_model/cars_data_model.dart';
 import 'package:moto_maintanix/models/repo/car_table_model/car_table_model.dart';
-import 'package:moto_maintanix/service/object_box_service.dart';
+import 'package:moto_maintanix/service/object_box_service/object_box_service.dart';
 
 class CarListItemBloc extends Cubit<List<CarTableModel>> {
   CarListItemBloc() : super([]);
 
   TextEditingController carYearCtrl = TextEditingController();
   TextEditingController carExtraNoteCtrl = TextEditingController();
+  late CarCategoryBloc carType;
+  late VehicleBrandBloc carBrand;
+  late VehicleModelBloc carModel;
+  late ImagePickerBloc imageP;
 
   void setDataFromDB(BuildContext context, CarTableModel carItem) {
-    final carType = context.read<CarCategoryBloc>();
-    final carBrand = context.read<VehicleBrandBloc>();
-    final carModel = context.read<VehicleModelBloc>();
-    final imageP = context.read<ImagePickerBloc>();
     carYearCtrl.text = carItem.year!;
     carExtraNoteCtrl.text = carItem.notes!;
-    carType.setCategory(CarCategoryModel.list
-        .firstWhere((element) => element.id == carItem.carType));
+    carType.setCategory(
+        CarCategoryModel.list
+            .firstWhere((element) => element.id == carItem.carType),
+        context);
     carBrand.setBrand(CarsDataModel(brand: carItem.brand, models: []));
     carModel.setModel(carItem.model);
     imageP.setImage(carItem.image);
   }
 
-  void saveCar(BuildContext context) {
-    final carType = context.read<CarCategoryBloc>();
-    final carBrand = context.read<VehicleBrandBloc>();
-    final carModel = context.read<VehicleModelBloc>();
-    final imageP = context.read<ImagePickerBloc>();
+  void saveCar(BuildContext context, int? id) {
     if (carType.state == null ||
         carBrand.state == null ||
         carModel.state.isEmpty) {
@@ -43,6 +41,7 @@ class CarListItemBloc extends Cubit<List<CarTableModel>> {
       return;
     }
     final data = CarTableModel(
+      id: id,
       carType: carType.state!.id,
       brand: carBrand.state!.brand,
       model: carModel.state,
@@ -58,19 +57,37 @@ class CarListItemBloc extends Cubit<List<CarTableModel>> {
             ),
           );
 
+    clearAll();
     getCarList(context);
-    clearAll(context);
   }
 
-  void getCarList(BuildContext context) {
+  List<CarTableModel> getCarList(BuildContext context) {
+    carType = context.read<CarCategoryBloc>();
+    carBrand = context.read<VehicleBrandBloc>();
+    carModel = context.read<VehicleModelBloc>();
+    imageP = context.read<ImagePickerBloc>();
+    final List<CarTableModel> defaultList = [];
     final data = ObjectBoxService.objectbox.getCarItems();
-    state.clear();
+    // state.clear();
     if (data.isNotEmpty) {
       context
           .read<SelectVehicleBloc>()
           .selectVehicle(context, 0, data.first.id!);
     }
-    emit(data);
+    final catState = context.read<CarCategoryBloc>().state;
+    // print(catState?.id);
+    if (catState == null || catState.id == -1) {
+      emit(data);
+      return data;
+    } else {
+      for (var element in data) {
+        if (element.carType == catState.id) {
+          defaultList.add(element);
+        }
+      }
+    }
+    emit(defaultList);
+    return defaultList;
   }
 
   void deleteVehicle(BuildContext context, CarTableModel carItem) async {
@@ -78,14 +95,10 @@ class CarListItemBloc extends Cubit<List<CarTableModel>> {
     getCarList(context);
     Navigator.pop(context);
     Navigator.pop(context);
-    clearAll(context);
+    clearAll();
   }
 
-  void clearAll(BuildContext context) {
-    final carType = context.read<CarCategoryBloc>();
-    final carBrand = context.read<VehicleBrandBloc>();
-    final carModel = context.read<VehicleModelBloc>();
-    final imageP = context.read<ImagePickerBloc>();
+  void clearAll() {
     carType.reset();
     carBrand.reset();
     carModel.reset();
@@ -94,9 +107,20 @@ class CarListItemBloc extends Cubit<List<CarTableModel>> {
     carExtraNoteCtrl.clear();
   }
 
-  // void updateCarItem(CarTableModel carItem) {
-  //   final index = state.indexWhere((element) => element.id == carItem.id);
-  //   state[index] = carItem;
-  //   emit(state);
-  // }
+  void onSearchVehicle(BuildContext context, String text) {
+    final List<CarTableModel> data = getCarList(context);
+    final List<CarTableModel> defaultList = [];
+    for (var element in data) {
+      if (element.brand.toLowerCase().contains(text.toLowerCase()) ||
+          element.model.toLowerCase().contains(text.toLowerCase()) ||
+          element.year.toString().toLowerCase().contains(text.toLowerCase())) {
+        defaultList.add(element);
+      }
+    }
+    if (text.isEmpty) {
+      getCarList(context);
+      return;
+    }
+    emit(defaultList);
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moto_maintanix/models/app/car_category_model.dart';
+import 'package:moto_maintanix/conf/flutter_conf.dart';
+import 'package:moto_maintanix/models/app/car_category_model/car_category_model.dart';
 
 class CategoryTabWidget extends StatefulWidget {
   const CategoryTabWidget({super.key});
@@ -10,13 +11,11 @@ class CategoryTabWidget extends StatefulWidget {
 
 class _CategoryTabWidgetState extends State<CategoryTabWidget>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
   List<CarCategoryModel> list = List.from(CarCategoryModel.list);
   @override
   void initState() {
     list.insert(0, CarCategoryModel(name: 'All', id: -1, image: ''));
-    _tabController = TabController(
+    context.read<CarCategoryBloc>().tabController = TabController(
       length: list.length,
       vsync: this,
     );
@@ -27,10 +26,13 @@ class _CategoryTabWidgetState extends State<CategoryTabWidget>
   Widget build(BuildContext context) {
     return TabBar(
       isScrollable: true,
-      controller: _tabController,
+      controller: context.read<CarCategoryBloc>().tabController,
       unselectedLabelColor: Colors.grey,
       dividerColor: Colors.transparent,
       padding: EdgeInsets.zero,
+      onTap: (index) {
+        context.read<CarCategoryBloc>().setCategory(list[index], context);
+      },
       tabAlignment: TabAlignment.start,
       tabs: List.generate(
         list.length,

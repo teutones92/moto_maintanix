@@ -9,46 +9,49 @@ class NoMaintRecordsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height / 1.45,
+        height: MediaQuery.of(context).size.height * 0.7,
         child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8),
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return const Opacity(
-                      opacity: 0.15,
-                      child: Card(
-                        elevation: 15,
-                        margin: EdgeInsets.all(8),
-                        child: Column(
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                'Maintenance Item',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
+            GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, crossAxisSpacing: 0, mainAxisSpacing: 0),
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return const Opacity(
+                    opacity: 0.15,
+                    child: Card(
+                      elevation: 15,
+                      margin: EdgeInsets.all(4),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ListTile(
+                            dense: true,
+                            title: Text(
+                              'Maintenance Item',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
-                              subtitle: Text('Last Maintenance Date'),
                             ),
-                            Divider(),
-                            ListTile(
-                              title: Text('Next Maintenance Date'),
-                              subtitle: Text('Next Maintenance Item'),
+                            subtitle: Column(
+                              children: [
+                                Text('Maintenance Date: XXXX-XX-XX'),
+                                Text('Next Maintenance Date: XXXX-XX-XX'),
+                              ],
                             ),
-                          ],
-                        ),
+                            isThreeLine: true,
+                          ),
+                          // Divider(),
+                          // ListTile(
+                          //   title: Text('Next Maintenance Date'),
+                          //   subtitle: Text('Next Maintenance Item'),
+                          // ),
+                        ],
                       ),
-                    );
-                  }),
-            ),
+                    ),
+                  );
+                }),
             const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

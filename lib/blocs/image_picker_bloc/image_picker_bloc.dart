@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:image_picker/image_picker.dart';
@@ -33,10 +32,10 @@ class ImagePickerBloc extends Cubit<Uint8List?> {
     }
   }
 
-  String _convertToBase64(File file) {
-    final bytes = file.readAsBytesSync();
-    return base64Encode(bytes);
-  }
+  // String _convertToBase64(File file) {
+  //   final bytes = file.readAsBytesSync();
+  //   return base64Encode(bytes);
+  // }
 
   void setImage(String? image) {
     if (image != null) {

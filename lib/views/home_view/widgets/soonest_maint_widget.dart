@@ -42,7 +42,7 @@ class SoonestMaintWidget extends StatelessWidget {
                   duration: const Duration(milliseconds: 500),
                   child: Text(
                       key: ValueKey(state),
-                      state.isEmpty ? 'N/A' : state,
+                      state.isEmpty ? 'xxxx-xx-xx' : state,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           // color: Colors.red.shade900,
                           fontWeight: FontWeight.bold)),

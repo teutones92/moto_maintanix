@@ -23,6 +23,7 @@ class VehicleMaintRecordView extends StatelessWidget {
             expandedHeight: 120.0,
             floating: false,
             pinned: true,
+            surfaceTintColor: Colors.transparent,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             flexibleSpace: const FlexibleSpaceBar(
               title: Text('Maintenance Record'),

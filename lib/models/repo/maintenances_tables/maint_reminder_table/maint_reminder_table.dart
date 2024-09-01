@@ -7,6 +7,7 @@ class MaintReminderTable {
   final int? userId;
   int vehicleId;
   int maintId;
+  String calendarEventId;
   String title;
   String? description;
   String date;
@@ -19,6 +20,7 @@ class MaintReminderTable {
     this.userId,
     required this.vehicleId,
     required this.maintId,
+    required this.calendarEventId,
     required this.title,
     required this.description,
     required this.date,
@@ -39,6 +41,7 @@ class MaintReminderTable {
       addedToCalendar: json['added_to_calendar'],
       vehicleId: json['vehicle_id'],
       maintId: json['maint_id'],
+      calendarEventId: json['calendar_event_id'],
     );
   }
 
@@ -54,6 +57,7 @@ class MaintReminderTable {
       'added_to_calendar': addedToCalendar,
       'vehicle_id': vehicleId,
       'maint_id': maintId,
+      'calendar_event_id': calendarEventId,
     };
   }
 
@@ -69,6 +73,7 @@ class MaintReminderTable {
       completed: mrt.completed,
       reminderStatus: mrt.reminderStatus,
       addedToCalendar: mrt.addedToCalendar,
+      calendarEventId: mrt.calendarEventId,
     );
   }
 }

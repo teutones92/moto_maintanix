@@ -54,7 +54,8 @@ class ThemeX extends Cubit<ThemeMode> {
       elevation: 0,
     ),
     iconTheme: const IconThemeData(color: Colors.white),
-    listTileTheme: const ListTileThemeData(textColor: Colors.white),
+    listTileTheme: const ListTileThemeData(
+        textColor: Colors.white, iconColor: Colors.white),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: const TextStyle(color: Colors.white),
       labelStyle: const TextStyle(color: Colors.white),

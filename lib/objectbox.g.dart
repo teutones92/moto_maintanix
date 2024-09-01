@@ -173,7 +173,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(7, 2329443081843615864),
       name: 'MaintReminderTable',
-      lastPropertyId: const obx_int.IdUid(10, 4684876427533561082),
+      lastPropertyId: const obx_int.IdUid(11, 4174107583062188541),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -225,6 +225,11 @@ final _entities = <obx_int.ModelEntity>[
             id: const obx_int.IdUid(10, 4684876427533561082),
             name: 'addedToCalendar',
             type: 1,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(11, 4174107583062188541),
+            name: 'calendarEventId',
+            type: 9,
             flags: 0)
       ],
       relations: <obx_int.ModelRelation>[],
@@ -232,7 +237,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(8, 8304885754923632987),
       name: 'FilesTableModel',
-      lastPropertyId: const obx_int.IdUid(7, 4445885597879132843),
+      lastPropertyId: const obx_int.IdUid(8, 3320792604246989971),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -268,6 +273,11 @@ final _entities = <obx_int.ModelEntity>[
         obx_int.ModelProperty(
             id: const obx_int.IdUid(7, 4445885597879132843),
             name: 'attachedDate',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(8, 3320792604246989971),
+            name: 'fileExtension',
             type: 9,
             flags: 0)
       ],
@@ -547,7 +557,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
               ? null
               : fbb.writeString(object.description!);
           final dateOffset = fbb.writeString(object.date);
-          fbb.startTable(11);
+          final calendarEventIdOffset = fbb.writeString(object.calendarEventId);
+          fbb.startTable(12);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addInt64(1, object.userId);
           fbb.addOffset(2, titleOffset);
@@ -558,6 +569,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
           fbb.addBool(7, object.completed);
           fbb.addBool(8, object.reminderStatus);
           fbb.addBool(9, object.addedToCalendar);
+          fbb.addOffset(10, calendarEventIdOffset);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -572,6 +584,9 @@ obx_int.ModelDefinition getObjectBoxModel() {
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
           final maintIdParam =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0);
+          final calendarEventIdParam =
+              const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 24, '');
           final titleParam = const fb.StringReader(asciiOptimization: true)
               .vTableGet(buffer, rootOffset, 8, '');
           final descriptionParam =
@@ -590,6 +605,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
               userId: userIdParam,
               vehicleId: vehicleIdParam,
               maintId: maintIdParam,
+              calendarEventId: calendarEventIdParam,
               title: titleParam,
               description: descriptionParam,
               date: dateParam,
@@ -611,7 +627,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final titleOffset = fbb.writeString(object.title);
           final fileOffset = fbb.writeString(object.file);
           final attachedDateOffset = fbb.writeString(object.attachedDate);
-          fbb.startTable(8);
+          final fileExtensionOffset = fbb.writeString(object.fileExtension);
+          fbb.startTable(9);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addInt64(1, object.vehicleId);
           fbb.addInt64(2, object.userId);
@@ -619,6 +636,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
           fbb.addOffset(4, titleOffset);
           fbb.addOffset(5, fileOffset);
           fbb.addOffset(6, attachedDateOffset);
+          fbb.addOffset(7, fileExtensionOffset);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -640,6 +658,9 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final attachedDateParam =
               const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 16, '');
+          final fileExtensionParam =
+              const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 18, '');
           final object = FilesTableModel(
               id: idParam,
               vehicleId: vehicleIdParam,
@@ -647,7 +668,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
               maintId: maintIdParam,
               title: titleParam,
               file: fileParam,
-              attachedDate: attachedDateParam);
+              attachedDate: attachedDateParam,
+              fileExtension: fileExtensionParam);
 
           return object;
         })
@@ -802,6 +824,10 @@ class MaintReminderTable_ {
   /// See [MaintReminderTable.addedToCalendar].
   static final addedToCalendar =
       obx.QueryBooleanProperty<MaintReminderTable>(_entities[3].properties[9]);
+
+  /// See [MaintReminderTable.calendarEventId].
+  static final calendarEventId =
+      obx.QueryStringProperty<MaintReminderTable>(_entities[3].properties[10]);
 }
 
 /// [FilesTableModel] entity fields to define ObjectBox queries.
@@ -833,4 +859,8 @@ class FilesTableModel_ {
   /// See [FilesTableModel.attachedDate].
   static final attachedDate =
       obx.QueryStringProperty<FilesTableModel>(_entities[4].properties[6]);
+
+  /// See [FilesTableModel.fileExtension].
+  static final fileExtension =
+      obx.QueryStringProperty<FilesTableModel>(_entities[4].properties[7]);
 }

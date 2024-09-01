@@ -25,10 +25,13 @@ class MaintDates extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(
-                        data: index == 0
-                            ? 'Maintenance Date'
-                            : 'Next Maintenance Date',
+                      Flexible(
+                        child: CustomText(
+                          data: index == 0
+                              ? 'Maintenance Date'
+                              : 'Next Maintenance Date',
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       Text(index == 0
                           ? state!.maintDate

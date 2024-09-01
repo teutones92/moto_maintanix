@@ -10,6 +10,7 @@ class FilesTableModel {
   final String title;
   final String file;
   final String attachedDate;
+  final String fileExtension;
 
   FilesTableModel({
     this.id,
@@ -19,6 +20,7 @@ class FilesTableModel {
     required this.title,
     required this.file,
     required this.attachedDate,
+    required this.fileExtension,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,6 +32,7 @@ class FilesTableModel {
       'title': title,
       'file': file,
       'attachedDate': attachedDate,
+      'fileExtension': fileExtension,
     };
   }
 
@@ -42,6 +45,7 @@ class FilesTableModel {
       title: map['title'],
       file: map['file'],
       attachedDate: map['attachedDate'],
+      fileExtension: map['fileExtension'],
     );
   }
 }

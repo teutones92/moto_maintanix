@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/models/repo/maintenances_tables/maint_table/maint_table.dart';
-import 'package:moto_maintanix/service/maint_reminder_service.dart';
+import 'package:moto_maintanix/service/maint_reminder_service/maint_reminder_service.dart';
 
 import '../../../conf/flutter_conf.dart';
 import '../../../models/repo/maintenances_tables/maint_reminder_table/maint_reminder_table.dart';
@@ -29,6 +29,7 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
           completed: state?.completed ?? false,
           reminderStatus: state?.reminderStatus ?? false,
           addedToCalendar: state?.addedToCalendar ?? false,
+          calendarEventId: state?.calendarEventId ?? '',
         ),
       );
 
@@ -60,23 +61,13 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
     getReminders(maintTable);
   }
 
-  void addEventToCalendar(BuildContext context, bool add) {
-    MaintReminderService.addOrRemoveReminderToCalendar(state!, add)
-        .then((value) {
-      if (value) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            duration: Duration(milliseconds: 500),
-            content: Text('Reminder added to calendar'),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Failed to add reminder to calendar'),
-          ),
-        );
-      }
-    });
+  void addEventToCalendar(
+      BuildContext context, bool add, MaintTable maintTable) async {
+    final reminder =
+        await MaintReminderService.addOrRemoveReminderToCalendar(state!, add);
+    if (context.mounted) {
+      saveReminder(
+          context: context, reminder: reminder, maintTable: maintTable);
+    }
   }
 }

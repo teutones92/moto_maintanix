@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
-import 'package:moto_maintanix/models/app/part_cost_model.dart';
+import 'package:moto_maintanix/models/app/part_cost_model/part_cost_model.dart';
 import 'package:moto_maintanix/models/repo/maintenances_tables/maint_cost_table/maint_cost_table.dart';
-import 'package:moto_maintanix/service/car_maint_cost_service.dart';
+import 'package:moto_maintanix/service/car_maint_cost_service/car_maint_cost_service.dart';
 
 class CarMaintPartCostBloc extends Cubit<List<MaintCostTable>> {
   CarMaintPartCostBloc() : super([]);
@@ -14,6 +14,15 @@ class CarMaintPartCostBloc extends Cubit<List<MaintCostTable>> {
   void getMaintCostList({required int vehicleId, required int maintId}) {
     final maintCostList = CarMaintCostService.getCarCostMaintList(
         vehicleId: vehicleId, maintId: maintId);
+    for (var e in maintCostList) {
+      maintPartCostList.value.add(
+        PartCostModel(
+          id: e.id,
+          partName: e.part,
+          partCost: e.cost,
+        ),
+      );
+    }
     emit(maintCostList);
   }
 
@@ -23,6 +32,7 @@ class CarMaintPartCostBloc extends Cubit<List<MaintCostTable>> {
     }
     final maintCostTableList = maintPartCostList.value
         .map((partCost) => MaintCostTable(
+              id: partCost.id,
               maintId: maintId,
               vehicleId: vehicleId,
               part: partCost.partName ?? '',
@@ -37,7 +47,7 @@ class CarMaintPartCostBloc extends Cubit<List<MaintCostTable>> {
   // This method is used to add a new part cost item to the list of widgets
   void addNewPartCostItem() {
     final partCostList = maintPartCostList.value;
-    partCostList.add(PartCostModel(partName: '', partCost: 0.0));
+    partCostList.add(PartCostModel());
     maintPartCostList.value = List.from(partCostList);
   }
 

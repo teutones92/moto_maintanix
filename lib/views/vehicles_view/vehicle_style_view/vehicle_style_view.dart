@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
-import 'package:moto_maintanix/models/app/car_category_model.dart';
+import 'package:moto_maintanix/models/app/car_category_model/car_category_model.dart';
 
 class VehicleStyleView extends StatelessWidget {
   const VehicleStyleView({super.key});
@@ -26,7 +26,7 @@ class VehicleStyleView extends StatelessWidget {
           return Card(
             child: InkWell(
               onTap: () {
-                context.read<CarCategoryBloc>().setCategory(car);
+                context.read<CarCategoryBloc>().setCategory(car, context);
                 Navigator.pop(context);
               },
               child: Center(
