@@ -29,9 +29,10 @@ class _HomeGarageListState extends State<HomeGarageList> {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.grey.shade400
-              : ThemeX.darkTheme.scaffoldBackgroundColor.withOpacity(0.5),
+          color: Colors.grey.shade400,
+          // color: Theme.of(context).brightness == Brightness.dark
+          //     ? Colors.grey.shade400
+          //     : ThemeX.darkTheme.scaffoldBackgroundColor.withOpacity(0.8),
           // color: Colors.grey.shade400,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -109,7 +110,8 @@ class _HomeGarageListState extends State<HomeGarageList> {
                           },
                           child: Card(
                             color: index == selectedIndex
-                                ? const Color.fromARGB(122, 36, 0, 0)
+                                ? ThemeX.darkTheme.scaffoldBackgroundColor
+                                    .withOpacity(0.8)
                                 : Colors.transparent,
                             elevation: index == selectedIndex ? 10 : 1,
                             child: Padding(

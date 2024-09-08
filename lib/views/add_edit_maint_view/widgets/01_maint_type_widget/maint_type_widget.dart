@@ -43,9 +43,13 @@ class MaintTypeWidget extends StatelessWidget {
                                             true;
                                         carMainBLoc.maintTypeController.text =
                                             '';
+                                        carMainBLoc
+                                            .maintDetailsController.text = '';
                                       } else {
                                         carMainBLoc.maintTypeController.text =
                                             maintType.name;
+                                        carMainBLoc.maintDetailsController
+                                            .text = maintType.description;
                                       }
                                     },
                                     child: ValueListenableBuilder(

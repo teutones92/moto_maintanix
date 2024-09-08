@@ -42,11 +42,6 @@ class NoMaintRecordsWidget extends StatelessWidget {
                             ),
                             isThreeLine: true,
                           ),
-                          // Divider(),
-                          // ListTile(
-                          //   title: Text('Next Maintenance Date'),
-                          //   subtitle: Text('Next Maintenance Item'),
-                          // ),
                         ],
                       ),
                     ),

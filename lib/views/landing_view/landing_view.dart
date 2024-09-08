@@ -18,7 +18,7 @@ class _LandingViewState extends State<LandingView>
   void initState() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 450),
+      duration: const Duration(milliseconds: 350),
     );
     super.initState();
   }
