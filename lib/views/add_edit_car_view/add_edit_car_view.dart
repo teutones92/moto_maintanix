@@ -58,7 +58,7 @@ class _AddEditCarState extends State<AddEditCar> {
                     right: 0,
                     bottom: 0,
                     child: Image.asset(
-                      'assets/cars_images/no_car.png',
+                      'assets/cars_images/no_car.webp',
                       fit: BoxFit.fitWidth,
                     ),
                   ),

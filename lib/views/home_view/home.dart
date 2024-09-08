@@ -9,8 +9,12 @@ import 'widgets/search_bar_widget.dart';
 import 'widgets/soonest_maint_widget.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key, required this.toggleAnimation});
+  const Home(
+      {super.key,
+      required this.toggleAnimation,
+      required this.animationController});
   final VoidCallback toggleAnimation;
+  final AnimationController animationController;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,13 @@ class Home extends StatelessWidget {
         title: Text('MY GARAGE', style: Theme.of(context).textTheme.titleLarge),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: AnimatedIcon(
+            icon: AnimatedIcons.menu_close,
+            progress: context
+                .read<HomeCarListControllerBloc>()
+                .tween
+                .animate(animationController),
+          ),
           onPressed: toggleAnimation,
         ),
         actions: [
