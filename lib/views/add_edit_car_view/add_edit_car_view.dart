@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
+import 'package:moto_maintanix/modals/0.1vehicle_brand_modal/modal_brand_view.dart';
 import 'package:moto_maintanix/models/app/car_category_model/car_category_model.dart';
 import 'package:moto_maintanix/models/external_server/cars_data_model/cars_data_model.dart';
 import 'package:moto_maintanix/models/repo/car_table_model/car_table_model.dart';
-import 'package:moto_maintanix/views/vehicles_view/vehicle_brand_view/vehicle_brand_view.dart';
-import 'package:moto_maintanix/views/vehicles_view/vehicle_model_view/vehicle_model_view.dart';
-import 'package:moto_maintanix/views/vehicles_view/vehicle_style_view/vehicle_style_view.dart';
+import 'package:moto_maintanix/modals/0.2vehicle_model_modal/vehicle_model_modal.dart';
+import 'package:moto_maintanix/modals/0.0vehicle_style_modal/vehicle_style_modal.dart';
+
+import 'widgets/foot_buttons.dart';
 
 class AddEditCar extends StatefulWidget {
   const AddEditCar({super.key, required this.vehicle});
@@ -171,7 +173,7 @@ class _AddEditCarState extends State<AddEditCar> {
                                       // backgroundColor: Theme.of(context)
                                       //     .scaffoldBackgroundColor,
                                       builder: (context) {
-                                        return const VehicleStyleView();
+                                        return const VehicleStyleModal();
                                       },
                                     );
                                     break;
@@ -181,7 +183,7 @@ class _AddEditCarState extends State<AddEditCar> {
                                       backgroundColor: Theme.of(context)
                                           .scaffoldBackgroundColor,
                                       builder: (context) {
-                                        return const VehicleBrandView();
+                                        return const ModalBrandView();
                                       },
                                     );
                                     break;
@@ -191,7 +193,7 @@ class _AddEditCarState extends State<AddEditCar> {
                                       backgroundColor: Theme.of(context)
                                           .scaffoldBackgroundColor,
                                       builder: (context) {
-                                        return const VehicleModelView();
+                                        return const VehicleModelModal();
                                       },
                                     );
                                     break;
@@ -269,67 +271,7 @@ class _AddEditCarState extends State<AddEditCar> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          if (widget.vehicle != null)
-                            Expanded(
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red,
-                                ),
-                                onPressed: () => showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      title: const Text('Remove Vehicle'),
-                                      content: const Text(
-                                          'Are you sure you want to remove this vehicle?'),
-                                      actions: [
-                                        TextButton(
-                                          style: TextButton.styleFrom(
-                                            foregroundColor: Colors.green,
-                                          ),
-                                          onPressed: () =>
-                                              Navigator.pop(context),
-                                          child: const Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          style: TextButton.styleFrom(
-                                            foregroundColor: Colors.red,
-                                          ),
-                                          onPressed: () {
-                                            context
-                                                .read<CarListItemBloc>()
-                                                .deleteVehicle(
-                                                    context, widget.vehicle!);
-                                          },
-                                          child: const Text('Remove Vehicle'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                                child: const Text('Remove Vehicle'),
-                              ),
-                            ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                              ),
-                              onPressed: () {
-                                context
-                                    .read<CarListItemBloc>()
-                                    .saveCar(context, widget.vehicle?.id);
-                              },
-                              child: Text(widget.vehicle != null
-                                  ? 'Update Vehicle'
-                                  : 'Save Vehicle'),
-                            ),
-                          ),
-                        ],
-                      ),
+                      FootButtons(widget: widget),
                     ],
                   ),
                 )

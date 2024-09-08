@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/models/app/car_category_model/car_category_model.dart';
 
-class VehicleStyleView extends StatelessWidget {
-  const VehicleStyleView({super.key});
+class VehicleStyleModal extends StatelessWidget {
+  const VehicleStyleModal({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class VehicleStyleView extends StatelessWidget {
                   Text(
                     car.name,
                     style: const TextStyle(
+                      color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       shadows: [

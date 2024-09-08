@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/models/external_server/cars_data_model/cars_data_model.dart';
 
-class VehicleModelView extends StatelessWidget {
-  const VehicleModelView({super.key});
+class VehicleModelModal extends StatelessWidget {
+  const VehicleModelModal({super.key});
 
   @override
   Widget build(BuildContext context) {

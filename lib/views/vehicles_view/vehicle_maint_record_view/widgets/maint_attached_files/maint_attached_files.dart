@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/models/repo/files_table_mode/files_table_mode.dart';
-import 'package:moto_maintanix/views/modals_view/files_modal_view/files_modal_view.dart';
+import 'package:moto_maintanix/modals/files_modal_view/files_modal_view.dart';
 
 class MaintAttachedFiles extends StatelessWidget {
   const MaintAttachedFiles({super.key});

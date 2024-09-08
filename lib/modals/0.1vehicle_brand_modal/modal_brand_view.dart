@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:moto_maintanix/conf/flutter_conf.dart';
 import 'package:moto_maintanix/models/external_server/cars_data_model/cars_data_model.dart';
 
-class VehicleBrandView extends StatefulWidget {
-  const VehicleBrandView({super.key});
+class ModalBrandView extends StatefulWidget {
+  const ModalBrandView({super.key});
 
   @override
-  State<VehicleBrandView> createState() => _VehicleBrandViewState();
+  State<ModalBrandView> createState() => _ModalBrandViewState();
 }
 
-class _VehicleBrandViewState extends State<VehicleBrandView> {
+class _ModalBrandViewState extends State<ModalBrandView> {
   @override
   void initState() {
     if (context.read<VehicleBrandListBloc>().state.isEmpty) {
@@ -30,17 +30,23 @@ class _VehicleBrandViewState extends State<VehicleBrandView> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: TextField(
-                        onChanged: (value) {
-                          context
-                              .read<VehicleBrandListBloc>()
-                              .searchBrand(value);
-                        },
-                        decoration: const InputDecoration(
-                          hintText: 'Search',
-                          filled: true,
-                          fillColor: Colors.grey,
-                          prefixIcon: Icon(Icons.search, color: Colors.white),
+                      child: Card(
+                        child: TextField(
+                          onChanged: (value) {
+                            context
+                                .read<VehicleBrandListBloc>()
+                                .searchBrand(value);
+                          },
+                          decoration: const InputDecoration(
+                            hintText: 'Search vehicle brand...',
+                            filled: true,
+                            // fillColor: Colors.grey.,
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                            ),
+                            prefixIcon: Icon(Icons.search),
+                          ),
                         ),
                       ),
                     ),
