@@ -151,7 +151,14 @@ class ObjectBoxService {
   }
 
   // Delete a file record
-  void deleteAllFiles() {
-    _store.box<FilesTableModel>().removeAll();
+  void deleteAllFiles(int vehicleId, int maintId) {
+    _store
+        .box<FilesTableModel>()
+        .query(
+          FilesTableModel_.vehicleId.equals(vehicleId) &
+              FilesTableModel_.maintId.equals(maintId),
+        )
+        .build()
+        .remove();
   }
 }

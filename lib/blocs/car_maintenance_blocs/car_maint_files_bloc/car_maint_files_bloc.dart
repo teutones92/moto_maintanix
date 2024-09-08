@@ -90,7 +90,9 @@ class CarMaintFilesBloc extends Cubit<List<FilesTableModel>> {
       );
       CarAttachFilesService.addNewRegister(file);
     }
-    if (state.isEmpty) _deleteAllFile();
+    if (state.isEmpty) {
+      _deleteAllFileByMaintID(vehicleId: vehicleId, maintId: maintId);
+    }
   }
 
   void openFile(FilesTableModel file) async {
@@ -116,7 +118,10 @@ class CarMaintFilesBloc extends Cubit<List<FilesTableModel>> {
     }
   }
 
-  void _deleteAllFile() => CarAttachFilesService.removeAllFile();
+  void _deleteAllFileByMaintID(
+          {required int vehicleId, required int maintId}) =>
+      CarAttachFilesService.removeAllFileByMaintId(
+          vehicleId: vehicleId, maintId: maintId);
 
   void clearAll() => emit([]);
 }

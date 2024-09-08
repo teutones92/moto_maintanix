@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:moto_maintanix/models/repo/maintenances_tables/maint_table/maint_table.dart';
 
-import 'switcher_widgets.dart';
+import 'widgets/switcher_widgets.dart';
 
-class ModalBodyWidget extends StatelessWidget {
-  const ModalBodyWidget({super.key, required this.maintState});
+class ReminderModalView extends StatelessWidget {
+  const ReminderModalView({super.key, required this.maintState});
   final MaintTable maintState;
 
   @override

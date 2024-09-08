@@ -5,7 +5,7 @@ import 'package:moto_maintanix/service/calendar_service/calendar_service.dart';
 import 'package:moto_maintanix/service/notifications_service/notifications_service.dart';
 
 import '../../../../../blocs/car_maintenance_blocs/car_maint_reminder_bloc/car_maint_reminder_bloc.dart';
-import 'widgets/modal_body_widget.dart';
+import '../../../../modals_view/reminder_modal_view/reminder_modal_view.dart';
 
 class MaintRemainderButton extends StatelessWidget {
   const MaintRemainderButton({super.key});
@@ -26,13 +26,16 @@ class MaintRemainderButton extends StatelessWidget {
           await CalendarService.getCalendarPermission();
           await NotificationService.nService.getNotificationPermission();
           if (!context.mounted) return;
-          showModalBottomSheet(
+          await showModalBottomSheet(
             backgroundColor: Colors.transparent,
             context: context,
             builder: (context) {
-              return ModalBodyWidget(maintState: maintState);
+              return ReminderModalView(maintState: maintState);
             },
           );
+          if (context.mounted) {
+            context.read<CarMaintReminderBloc>().clearReminder();
+          }
         },
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,

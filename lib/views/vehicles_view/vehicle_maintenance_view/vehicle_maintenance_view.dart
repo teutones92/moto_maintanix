@@ -69,23 +69,71 @@ class VehicleMaintenanceView extends StatelessWidget {
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: Card(
-                    elevation: 10,
-                    child: TextField(
-                      onChanged: (value) {
-                        context
-                            .read<CarListMaintBloc>()
-                            .searchMaintList(value, carItemModel.id!);
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Search Maintenance Records',
-                        prefixIcon: const Icon(Icons.search),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Card(
+                          elevation: 10,
+                          child: TextField(
+                            onChanged: (value) {
+                              context
+                                  .read<CarListMaintBloc>()
+                                  .searchMaintList(value, carItemModel.id!);
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Search Maintenance Records',
+                              prefixIcon: const Icon(Icons.search),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      Card(
+                        elevation: 10,
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.0),
+                          child: PopupMenuButton(
+                              icon: const Icon(Icons.filter_list),
+                              itemBuilder: (context) {
+                                return List.generate(2, (index) {
+                                  return PopupMenuItem(
+                                    value: index,
+                                    onTap: () {
+                                      context
+                                          .read<CarListMaintBloc>()
+                                          .filterMaintList(index);
+                                    },
+                                    child: Align(
+                                      child: Text(
+                                        index == 0
+                                            ? 'Sort by Date'
+                                            : 'Sort by Type',
+                                      ),
+                                    ),
+                                  );
+                                });
+                              }),
+                        ),
+                      ),
+                      Card(
+                        elevation: 10,
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.0),
+                          child: IconButton(
+                            onPressed: () {
+                              context
+                                  .read<CarListMaintBloc>()
+                                  .getMaintList(carItemModel.id!);
+                            },
+                            icon: const Icon(Icons.refresh),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                const SliverToBoxAdapter(child: SizedBox(height: 10)),
                 BlocBuilder<CarListMaintBloc, List<MaintTable>>(
                   builder: (context, state) {
                     if (state.isEmpty) {
@@ -94,8 +142,9 @@ class VehicleMaintenanceView extends StatelessWidget {
                     return SliverGrid.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                      ),
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10),
                       itemCount: state.length,
                       itemBuilder: (context, index) {
                         final maint = state[index];

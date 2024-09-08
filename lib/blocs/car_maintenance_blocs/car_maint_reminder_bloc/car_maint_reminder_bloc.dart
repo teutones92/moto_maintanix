@@ -22,6 +22,7 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
 
   void setReminder(MaintTable maintTable) => emit(
         MaintReminderTable(
+          id: state?.id,
           vehicleId: maintTable.vehicleId,
           maintId: maintTable.id!,
           title: maintTable.maintType,
@@ -35,16 +36,15 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
         ),
       );
 
-  void clearReminder() {
-    emit(null);
-  }
-
   void saveReminder({
     required BuildContext context,
     required MaintReminderTable reminder,
     required MaintTable maintTable,
+    bool showSnack = true,
   }) {
     final count = MaintReminderService.saveMaintRemainder(reminder);
+    getReminders(maintTable);
+    if (!showSnack) return;
     if (count == 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -52,15 +52,13 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
         ),
       );
       return;
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          duration: Duration(milliseconds: 500),
-          content: Text('Reminder updated successfully'),
-        ),
-      );
     }
-    getReminders(maintTable);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        duration: Duration(milliseconds: 500),
+        content: Text('Reminder updated successfully'),
+      ),
+    );
   }
 
   void addEventToCalendar(
@@ -90,4 +88,31 @@ class CarMaintReminderBloc extends Cubit<MaintReminderTable?> {
           context: context, reminder: reminder, maintTable: maintTable);
     }
   }
+
+  void updateReminder(BuildContext context, MaintTable maintTable) {
+    if (state == null) {
+      setReminder(maintTable);
+      return;
+    }
+    final reminderData = MaintReminderTable(
+        id: state?.id,
+        vehicleId: maintTable.vehicleId,
+        maintId: maintTable.id!,
+        calendarEventId: state!.calendarEventId,
+        title: maintTable.maintType,
+        description: maintTable.maintDescription,
+        date: maintTable.maintDate,
+        location: state!.location,
+        completed: state!.completed,
+        reminderStatus: state!.reminderStatus,
+        addedToCalendar: state!.addedToCalendar);
+    saveReminder(
+      context: context,
+      reminder: reminderData,
+      maintTable: maintTable,
+      showSnack: false,
+    );
+  }
+
+  void clearReminder() => emit(null);
 }

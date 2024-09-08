@@ -11,5 +11,7 @@ class CarAttachFilesService {
         .getMaintFiles(vehicleId: vehicleId, maintId: maintId);
   }
 
-  static void removeAllFile() => ObjectBoxService.objectbox.deleteAllFiles();
+  static void removeAllFileByMaintId(
+          {required int vehicleId, required int maintId}) =>
+      ObjectBoxService.objectbox.deleteAllFiles(vehicleId, maintId);
 }

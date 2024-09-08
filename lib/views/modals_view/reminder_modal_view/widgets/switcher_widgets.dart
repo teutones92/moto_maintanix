@@ -3,7 +3,7 @@ import 'package:moto_maintanix/models/repo/maintenances_tables/maint_reminder_ta
 import 'package:moto_maintanix/models/repo/maintenances_tables/maint_table/maint_table.dart';
 import 'package:moto_maintanix/service/notifications_service/notifications_service.dart';
 
-import '../../../../../../conf/flutter_conf.dart';
+import '../../../../conf/flutter_conf.dart';
 
 class SwitchersWidget extends StatelessWidget {
   const SwitchersWidget(

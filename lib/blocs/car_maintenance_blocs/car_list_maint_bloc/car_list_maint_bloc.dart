@@ -27,16 +27,43 @@ class CarListMaintBloc extends Cubit<List<MaintTable>> {
       if (value.isEmpty) {
         getMaintList(vehicleId);
         return;
+      } else if (int.tryParse(value) != null) {
+        for (final maint in getMaintList(vehicleId)) {
+          if (maint.maintDate.toString().contains(value) ||
+              maint.nextMaintDate.toString().contains(value)) {
+            list.add(maint);
+          }
+        }
       } else {
         for (final maint in getMaintList(vehicleId)) {
           if (maint.maintType.toLowerCase().contains(value.toLowerCase())) {
             list.add(maint);
-            emit(list);
-          } else {
-            emit([]);
           }
         }
       }
+      emit(list);
     });
+  }
+
+  void _sortByDate() {
+    final sortedList = state;
+    sortedList.sort((a, b) => a.nextMaintDate.compareTo(b.nextMaintDate));
+    emit([]);
+    emit(sortedList);
+  }
+
+  void _sortByType() async {
+    final sortedList = state;
+    sortedList.sort((a, b) => a.maintType.compareTo(b.maintType));
+    emit([]);
+    emit(sortedList);
+  }
+
+  void filterMaintList(int i) {
+    if (i == 0) {
+      _sortByDate();
+    } else {
+      _sortByType();
+    }
   }
 }
