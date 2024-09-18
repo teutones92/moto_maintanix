@@ -27,7 +27,7 @@ class SideMenuModel {
     SideMenuModel(
       title: 'Terms & Conditions',
       icon: Icons.description_outlined,
-      route: 'https://www.google.com',
+      route: 'https://sites.google.com/view/moto-maintanix-terms-and-cond/home',
       available: true,
     ),
     SideMenuModel(
